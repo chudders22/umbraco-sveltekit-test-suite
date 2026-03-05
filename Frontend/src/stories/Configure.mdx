@@ -1,0 +1,116 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Welcome" />
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # Welcome to the Umbraco & SvelteKit Component Library
+
+    This is the Storybook documentation for the **Umbraco-SvelteKit** project. 
+    Here you will find all the reusable UI components that power the frontend of our headless CMS implementation.
+
+    We use **SvelteKit** for our framework and **Tailwind CSS** for styling, ensuring a fast, responsive, and beautiful user experience. 
+  </div>
+  
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">Component-Driven Development</h4>
+      <p className="sb-section-item-paragraph">We build UIs from the bottom up starting with atomic components and ending with pages. This helps us ensure consistency across the application and makes it easier to test individual pieces.</p>
+    </div>
+    
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">Light & Dark Modes</h4>
+      <p className="sb-section-item-paragraph">All of our components support dynamic theming. Use the sun/moon icon in the Storybook toolbar above to toggle between light and dark modes to see how components adapt.</p>
+    </div>
+    
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">Automated Testing</h4>
+      <p className="sb-section-item-paragraph">Quality is a priority. This Storybook instance is integrated with Vitest to automatically capture visual regression snapshots and run accessibility audits across both light and dark themes on every change.</p>
+    </div>
+  </div>
+</div>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # Tech Stack Overview
+  </div>
+
+  <div className="sb-features-grid">
+    <div className="sb-grid-item">
+      <h4 className="sb-section-item-heading">SvelteKit</h4>
+      <p className="sb-section-item-paragraph">Our core frontend framework, providing server-side rendering and routing.</p>
+    </div>
+    <div className="sb-grid-item">
+      <h4 className="sb-section-item-heading">Umbraco CMS</h4>
+      <p className="sb-section-item-paragraph">The headless backend powering our application, utilizing the Content Delivery API.</p>
+    </div>
+    <div className="sb-grid-item">
+      <h4 className="sb-section-item-heading">Tailwind CSS</h4>
+      <p className="sb-section-item-paragraph">Our utility-first CSS framework for rapid UI development and maintainable dark mode styling.</p>
+    </div>
+    <div className="sb-grid-item">
+      <h4 className="sb-section-item-heading">Vitest & Playwright</h4>
+      <p className="sb-section-item-paragraph">Running our Storybook component tests in a headless browser to ensure visual accuracy.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+	{`
+  .sb-container {
+    margin-bottom: 48px;
+  }
+
+  .sb-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .sb-section-title {
+    margin-bottom: 32px;
+  }
+
+  .sb-section-item, .sb-grid-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+
+  :global(.dark) .sb-section-item, :global(.dark) .sb-grid-item {
+    background: #0f172a;
+    border-color: #1e293b;
+  }
+
+  .sb-section-item-heading {
+    padding-top: 0 !important;
+    padding-bottom: 8px !important;
+    margin: 0 !important;
+  }
+
+  .sb-section-item-paragraph {
+    margin: 0;
+  }
+
+  .sb-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px 20px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .sb-section {
+      flex-direction: column;
+    }
+
+    .sb-features-grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  `}
+</style>

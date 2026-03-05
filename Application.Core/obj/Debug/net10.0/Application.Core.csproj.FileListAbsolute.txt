@@ -1,0 +1,15 @@
+C:\Users\antho\Source\Umbraco-Sveltekit\Application.Core\bin\Debug\net10.0\Application.Core.deps.json
+C:\Users\antho\Source\Umbraco-Sveltekit\Application.Core\bin\Debug\net10.0\Application.Core.dll
+C:\Users\antho\Source\Umbraco-Sveltekit\Application.Core\bin\Debug\net10.0\Application.Core.pdb
+C:\Users\antho\Source\Umbraco-Sveltekit\Application.Core\bin\Debug\net10.0\Application.Models.dll
+C:\Users\antho\Source\Umbraco-Sveltekit\Application.Core\bin\Debug\net10.0\Application.Models.pdb
+C:\Users\antho\Source\Umbraco-Sveltekit\Application.Core\obj\Debug\net10.0\Application.Core.csproj.AssemblyReference.cache
+C:\Users\antho\Source\Umbraco-Sveltekit\Application.Core\obj\Debug\net10.0\Application.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\antho\Source\Umbraco-Sveltekit\Application.Core\obj\Debug\net10.0\Application.Core.AssemblyInfoInputs.cache
+C:\Users\antho\Source\Umbraco-Sveltekit\Application.Core\obj\Debug\net10.0\Application.Core.AssemblyInfo.cs
+C:\Users\antho\Source\Umbraco-Sveltekit\Application.Core\obj\Debug\net10.0\Application.Core.csproj.CoreCompileInputs.cache
+C:\Users\antho\Source\Umbraco-Sveltekit\Application.Core\obj\Debug\net10.0\Applicat.AE33B510.Up2Date
+C:\Users\antho\Source\Umbraco-Sveltekit\Application.Core\obj\Debug\net10.0\Application.Core.dll
+C:\Users\antho\Source\Umbraco-Sveltekit\Application.Core\obj\Debug\net10.0\refint\Application.Core.dll
+C:\Users\antho\Source\Umbraco-Sveltekit\Application.Core\obj\Debug\net10.0\Application.Core.pdb
+C:\Users\antho\Source\Umbraco-Sveltekit\Application.Core\obj\Debug\net10.0\ref\Application.Core.dll
