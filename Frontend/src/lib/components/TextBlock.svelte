@@ -5,7 +5,7 @@
 </script>
 
 <div
-	class="prose max-w-none transition-colors prose-slate dark:prose-invert prose-a:font-semibold prose-a:text-red-600 hover:prose-a:text-red-700 dark:prose-a:text-red-400 dark:hover:prose-a:text-red-300"
+	class="prose max-w-none transition-colors prose-zinc dark:prose-invert prose-headings:font-display prose-headings:tracking-tight prose-a:font-medium prose-a:text-red-600 prose-a:no-underline hover:prose-a:underline dark:prose-a:text-red-400"
 >
 	{#if text?.markup}
 		{@html text.markup}

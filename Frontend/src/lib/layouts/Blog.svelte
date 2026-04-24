@@ -14,20 +14,23 @@
 {/if}
 
 <main
-	class="container mx-auto px-4 py-8 {isImageOffsetHeader
-		? 'relative z-10 -mt-24	 bg-white/20 shadow-lg backdrop-blur-sm md:rounded-t-2xl md:bg-white dark:bg-slate-900/40 dark:md:bg-slate-900'
+	class="container mx-auto px-4 py-12 {isImageOffsetHeader
+		? 'relative z-10 -mt-24 bg-white/30 ring-1 ring-zinc-200/50 backdrop-blur-sm md:rounded-t-2xl md:bg-white dark:bg-zinc-950/30 dark:ring-zinc-800/50 dark:md:bg-zinc-950'
 		: ''}"
 >
-	<h1 class="mb-4 text-4xl font-bold dark:text-white">{content.name}</h1>
-	<p class="mb-8 text-xl text-gray-600 dark:text-gray-400">Latest Articles</p>
+	<div class="mb-10">
+		<p class="mb-2 text-xs font-semibold tracking-widest text-red-600 uppercase dark:text-red-400">
+			Blog
+		</p>
+		<h1
+			class="font-display text-4xl font-bold tracking-tight text-zinc-900 md:text-5xl dark:text-zinc-50"
+		>
+			{content.name}
+		</h1>
+	</div>
 
 	<!-- The Blocklist -->
 	{#if content.properties?.pageContent?.items}
 		<BlockList items={content.properties.pageContent.items} />
 	{/if}
-
-	<!-- Blog Articles will eventually go here -->
-	<div class="mt-12">
-		<p class="text-gray-500 italic dark:text-gray-400">Blog articles list coming soon...</p>
-	</div>
 </main>

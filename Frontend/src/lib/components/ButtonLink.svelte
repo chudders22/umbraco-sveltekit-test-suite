@@ -31,9 +31,9 @@
 	let sizeClasses = $derived(getButtonSizeClasses(size));
 </script>
 
-<a {href} {target} class="{buttonBaseClasses} {variantClasses} {sizeClasses} {className}">
+<a {href} {target} class="group {buttonBaseClasses} {variantClasses} {sizeClasses} {className}">
 	{label}
 	{#if showArrow}
-		<span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+		<span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
 	{/if}
 </a>

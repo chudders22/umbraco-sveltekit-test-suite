@@ -30,15 +30,15 @@ export default defineConfig({
 					storybookTest({
 						configDir: path.join(dirname, '.storybook'),
 						tags: {
-							include: ['test-light'],
+							include: ['snapshot']
 						}
 					}),
 					storybookVis({
-						snapshotRootDir: path.join(dirname, '__vis__/storybook-light')
+						snapshotRootDir: path.join(dirname, '__vis__')
 					})
 				],
 				test: {
-					name: 'storybook-light',
+					name: 'storybook',
 					browser: {
 						enabled: true,
 						headless: true,
@@ -49,35 +49,7 @@ export default defineConfig({
 							}
 						]
 					},
-					setupFiles: ['.storybook/vitest.setup.light.ts']
-				}
-			},
-			{
-				extends: true,
-				plugins: [
-					storybookTest({
-						configDir: path.join(dirname, '.storybook'),
-						tags: {
-							include: ['test-dark'],
-						}
-					}),
-					storybookVis({
-						snapshotRootDir: path.join(dirname, '__vis__/storybook-dark')
-					})
-				],
-				test: {
-					name: 'storybook-dark',
-					browser: {
-						enabled: true,
-						headless: true,
-						provider: playwright({}),
-						instances: [
-							{
-								browser: 'chromium'
-							}
-						]
-					},
-					setupFiles: ['.storybook/vitest.setup.dark.ts']
+					setupFiles: ['.storybook/vitest.setup.ts']
 				}
 			}
 		]

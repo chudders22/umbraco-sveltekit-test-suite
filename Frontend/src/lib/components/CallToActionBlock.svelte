@@ -10,14 +10,27 @@
 </script>
 
 <section
-	class="relative overflow-hidden bg-gradient-to-br from-slate-100 via-slate-200 to-slate-300 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"
+	class="relative overflow-hidden border-y border-zinc-100 bg-white dark:border-zinc-800 dark:bg-zinc-950"
 >
-	<div class="flex flex-col items-center gap-8 md:flex-row">
+	<!-- Dot-grid texture: dark lines in light mode, light lines in dark mode -->
+	<div
+		class="absolute inset-0 bg-[linear-gradient(to_right,#00000012_1px,transparent_1px),linear-gradient(to_bottom,#00000012_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_right,black_40%,transparent_90%)] dark:hidden"
+		aria-hidden="true"
+	></div>
+	<div
+		class="absolute inset-0 hidden bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_right,black_40%,transparent_90%)] dark:block"
+		aria-hidden="true"
+	></div>
+
+	<div class="relative flex flex-col items-stretch md:flex-row">
 		<!-- Content Side -->
-		<div class="flex flex-1 flex-col gap-8 px-8 py-12 md:px-12 lg:px-16 lg:py-16">
+		<div class="flex flex-1 flex-col justify-center gap-6 px-8 py-8 md:px-12 lg:px-16 lg:py-12">
+			<!-- Red accent bar -->
+			<div class="h-0.5 w-32 bg-red-600" aria-hidden="true"></div>
+
 			{#if heading}
 				<h2
-					class="mb-4 text-3xl leading-tight font-bold text-red-600 md:text-4xl lg:text-5xl dark:text-white"
+					class="font-display text-3xl font-bold tracking-tight text-zinc-900 md:text-4xl lg:text-5xl dark:text-zinc-50"
 				>
 					{heading}
 				</h2>
@@ -25,20 +38,20 @@
 
 			{#if text?.markup}
 				<div
-					class="prose max-w-none text-xl font-semibold transition-colors prose-slate dark:prose-invert prose-a:font-semibold prose-a:text-red-600 hover:prose-a:text-red-700 dark:prose-a:text-red-400 dark:hover:prose-a:text-red-300"
+					class="prose max-w-none text-lg prose-p:text-zinc-600 dark:prose-p:text-zinc-300 prose-a:text-red-600 prose-a:no-underline hover:prose-a:underline dark:prose-a:text-red-400"
 				>
 					{@html text.markup}
 				</div>
 			{/if}
 
 			{#if actions && actions.length > 0}
-				<div class="flex flex-wrap gap-4">
+				<div class="flex flex-wrap gap-3">
 					{#each actions as action, i}
 						{@const href = action.url || action.route?.path || '#'}
 						<ButtonLink
 							{href}
 							target={action.target || '_self'}
-							variant={i === 0 ? 'secondary' : 'outline'}
+							variant={i === 0 ? 'primary' : 'outline'}
 							label={action.title || 'Learn More'}
 							showArrow={i === 0}
 						/>
@@ -57,7 +70,7 @@
 					loading="lazy"
 				/>
 				<div
-					class="absolute inset-0 bg-gradient-to-r from-slate-50/75 via-slate-100/50 to-transparent dark:from-slate-950 dark:via-slate-900/50 dark:to-transparent"
+					class="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent dark:from-zinc-950 dark:via-zinc-950/70"
 				></div>
 			</div>
 		{/if}

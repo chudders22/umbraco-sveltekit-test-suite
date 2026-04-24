@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { components } from '$lib/types/umbraco';
+	import Logo from './Logo.svelte';
 	import NavigationArea from './NavigationArea.svelte';
 	import ThemeToggle from './ThemeToggle.svelte';
 
@@ -20,32 +21,24 @@
 </script>
 
 <header
-	class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 backdrop-blur-md transition-colors dark:border-slate-700 dark:bg-slate-900"
+	class="sticky top-0 z-50 w-full border-b border-zinc-200/80 bg-white/90 backdrop-blur-md transition-colors dark:border-zinc-800/80 dark:bg-zinc-950/90"
 >
 	<div class="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
 		<!-- Logo & Site Name -->
-		<a href="/" class="flex items-center gap-3 transition-opacity hover:opacity-80">
-			{#if logo && logo.length > 0}
-				<img
-					src={logo[0].url}
-					alt={siteName || 'Site Logo'}
-					class="h-10 w-auto object-contain"
-					loading="eager"
-				/>
-			{/if}
-			{#if !logo && siteName}
-				<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white"
-					>{siteName}</span
-				>
-			{/if}
+		<a
+			href="/"
+			class="flex items-center gap-2.5 rounded-lg text-zinc-900 transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:outline-none dark:text-white dark:focus-visible:ring-red-400 dark:focus-visible:ring-offset-zinc-950"
+		>
+			<span class="block h-12">
+				<Logo />
+			</span>
 		</a>
 
 		<!-- Navigation Links -->
 		{#if links && links.items && links.items.length > 0}
-			<nav class="hidden md:block">
-				<ul class="flex items-center gap-8">
+			<nav class="hidden md:block" aria-label="Main navigation">
+				<ul class="flex items-center gap-0.5">
 					{#each links.items as item}
-						<!-- Handling navigationArea BlockType -->
 						{#if item.content.contentType === 'navigationArea' && item.content.properties}
 							<NavigationArea
 								{item}
@@ -63,17 +56,17 @@
 				</ul>
 			</nav>
 
-			<div class="flex items-center gap-2">
+			<div class="flex items-center gap-1">
 				<ThemeToggle />
 
 				<!-- Mobile Menu Button -->
 				<button
 					type="button"
-					class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-500 md:hidden dark:hover:bg-slate-800 dark:hover:text-slate-300"
+					class="inline-flex items-center justify-center rounded-lg p-2 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:outline-none md:hidden dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:focus-visible:ring-red-400"
 				>
 					<span class="sr-only">Open main menu</span>
 					<svg
-						class="h-6 w-6"
+						class="h-5 w-5"
 						fill="none"
 						viewBox="0 0 24 24"
 						stroke-width="1.5"

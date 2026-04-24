@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" aria-labelledby="title desc" role="img">
+  <title id="title">SEO analytics glass icon</title>
+  <desc id="desc">Frosted chart bars with glass magnifier.</desc>
+  <defs>
+    <linearGradient id="bgD" x1="16" y1="16" x2="114" y2="114" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f0abfc" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#60a5fa" stop-opacity="0.24"/>
+    </linearGradient>
+    <linearGradient id="strokeD" x1="22" y1="16" x2="108" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.28"/>
+    </linearGradient>
+    <filter id="blurD" x="0" y="0" width="128" height="128" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <circle cx="24" cy="30" r="12" fill="#f0abfc" fill-opacity="0.3" filter="url(#blurD)"/>
+  <circle cx="102" cy="98" r="14" fill="#60a5fa" fill-opacity="0.3" filter="url(#blurD)"/>
+
+  <rect x="14" y="14" width="100" height="100" rx="24" fill="url(#bgD)"/>
+  <rect x="14" y="14" width="100" height="100" rx="24" stroke="url(#strokeD)" stroke-width="2.5"/>
+
+  <rect x="32" y="64" width="10" height="30" rx="4" fill="#ffffff" fill-opacity="0.46"/>
+  <rect x="49" y="52" width="10" height="42" rx="4" fill="#ffffff" fill-opacity="0.46"/>
+  <rect x="66" y="41" width="10" height="53" rx="4" fill="#ffffff" fill-opacity="0.46"/>
+  <rect x="32" y="64" width="10" height="30" rx="4" stroke="#ffffff" stroke-opacity="0.66" stroke-width="1.8"/>
+  <rect x="49" y="52" width="10" height="42" rx="4" stroke="#ffffff" stroke-opacity="0.66" stroke-width="1.8"/>
+  <rect x="66" y="41" width="10" height="53" rx="4" stroke="#ffffff" stroke-opacity="0.66" stroke-width="1.8"/>
+
+  <circle cx="89" cy="43" r="13" fill="#ffffff" fill-opacity="0.4"/>
+  <circle cx="89" cy="43" r="13" stroke="#ffffff" stroke-opacity="0.78" stroke-width="2.2"/>
+  <path d="m98 52 9 9" stroke="#0f172a" stroke-opacity="0.55" stroke-width="4" stroke-linecap="round"/>
+  <path d="M32 52c8-7 13-9 18-8 7 1 11 8 17 8 5 0 10-4 16-10" stroke="#0f172a" stroke-opacity="0.5" stroke-width="3" stroke-linecap="round"/>
+</svg>

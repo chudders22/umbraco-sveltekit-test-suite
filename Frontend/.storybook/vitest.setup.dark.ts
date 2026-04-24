@@ -6,8 +6,8 @@ import { visAnnotations, vis } from 'storybook-addon-vis/vitest-setup';
 vis.setup({ auto: true });
 
 setProjectAnnotations([
-    a11yAddonAnnotations,
-    visAnnotations,
-    projectAnnotations,
-    { initialGlobals: { theme: 'dark' } }
+	a11yAddonAnnotations,
+	visAnnotations,
+	projectAnnotations,
+	{ initialGlobals: { theme: 'dark' } }
 ]);

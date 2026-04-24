@@ -14,8 +14,8 @@
 		"format": "prettier --write .",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
-		"test:storybook": "vitest --project=storybook-light --project=storybook-dark",
-		"test:storybook:ui": "vitest --project=storybook-light --project=storybook-dark --ui",
+		"test:storybook": "vitest --project=storybook",
+		"test:storybook:ui": "vitest --project=storybook --ui",
 		"generate-types": "set NODE_TLS_REJECT_UNAUTHORIZED=0&& openapi-typescript https://localhost:44356/umbraco/swagger/delivery/swagger.json -o ./src/lib/types/umbraco.d.ts"
 	},
 	"devDependencies": {
