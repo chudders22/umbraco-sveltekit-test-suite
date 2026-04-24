@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" aria-labelledby="title desc" role="img">
+  <title id="title">Digital strategy glass icon</title>
+  <desc id="desc">Glass target rings with directional arrow.</desc>
+  <defs>
+    <linearGradient id="bgE" x1="14" y1="16" x2="112" y2="114" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#67e8f9" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#c4b5fd" stop-opacity="0.24"/>
+    </linearGradient>
+    <linearGradient id="strokeE" x1="18" y1="18" x2="108" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.3"/>
+    </linearGradient>
+    <filter id="blurE" x="0" y="0" width="128" height="128" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <circle cx="96" cy="28" r="12" fill="#a78bfa" fill-opacity="0.3" filter="url(#blurE)"/>
+  <circle cx="30" cy="98" r="13" fill="#22d3ee" fill-opacity="0.3" filter="url(#blurE)"/>
+
+  <rect x="14" y="14" width="100" height="100" rx="24" fill="url(#bgE)"/>
+  <rect x="14" y="14" width="100" height="100" rx="24" stroke="url(#strokeE)" stroke-width="2.5"/>
+
+  <circle cx="64" cy="64" r="34" stroke="#ffffff" stroke-opacity="0.76" stroke-width="3"/>
+  <circle cx="64" cy="64" r="21" stroke="#ffffff" stroke-opacity="0.58" stroke-width="3"/>
+  <circle cx="64" cy="64" r="8" fill="#ffffff" fill-opacity="0.5"/>
+  <circle cx="64" cy="64" r="8" stroke="#ffffff" stroke-opacity="0.8" stroke-width="2"/>
+
+  <path d="m64 64 32-28" stroke="#0f172a" stroke-opacity="0.55" stroke-width="5" stroke-linecap="round"/>
+  <path d="M87 31h14v14" stroke="#0f172a" stroke-opacity="0.58" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M28 32h7" stroke="#ffffff" stroke-opacity="0.78" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M31.5 28.5v7" stroke="#ffffff" stroke-opacity="0.78" stroke-width="2.2" stroke-linecap="round"/>
+</svg>

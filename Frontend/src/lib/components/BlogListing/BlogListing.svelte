@@ -7,10 +7,12 @@
 
 	interface Props {
 		pageSize?: number | null;
+		title?: string | null;
+		subTitle?: string | null;
 	}
 
 	// We receive pageSize directly because BlockList.svelte spreads item.content.properties
-	let { pageSize = 6 }: Props = $props();
+	let { pageSize = 6, title, subTitle }: Props = $props();
 
 	// Initial data loaded from SSR (via +page.server.ts)
 	let posts = $state<components['schemas']['BlogArticleContentResponseModel'][]>(
@@ -57,9 +59,28 @@
 	}
 </script>
 
-<div class="container mx-auto py-8">
+<div class="container mx-auto py-8 md:py-12">
+	{#if title || subTitle}
+		<div class="mb-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4">
+			<header>
+				{#if title}
+					<h2
+						class="font-display text-3xl font-semibold tracking-widest text-zinc-500 uppercase md:text-4xl dark:text-zinc-400"
+					>
+						{title}
+					</h2>
+				{/if}
+				{#if subTitle}
+					<p class="mt-1 text-lg leading-relaxed text-zinc-500 dark:text-zinc-400">
+						{subTitle}
+					</p>
+				{/if}
+			</header>
+		</div>
+	{/if}
+
 	<!-- Grid Layout for Posts -->
-	<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+	<div class="grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2 xl:grid-cols-4">
 		{#each posts as post}
 			<BlogArticleCard {post} />
 		{/each}
@@ -67,7 +88,7 @@
 
 	<!-- Load More Button -->
 	{#if hasMore}
-		<div class="mt-12 text-center">
+		<div class="mt-16 flex justify-center">
 			<Button
 				onclick={loadMore}
 				{loading}
@@ -80,8 +101,8 @@
 
 	<!-- Empty State -->
 	{#if posts.length === 0 && !loading}
-		<div class="py-12 text-center">
-			<p class="text-lg text-slate-500 dark:text-slate-400">No articles found.</p>
+		<div class="py-24 text-center">
+			<p class="text-sm text-zinc-500 dark:text-zinc-400">No articles found.</p>
 		</div>
 	{/if}
 </div>

@@ -12,12 +12,12 @@
 </script>
 
 {#if imageUrl}
-	<section class="relative w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
-		<div class="relative max-h-[33vh] w-full overflow-hidden md:aspect-[3/1]">
+	<section class="relative w-full overflow-hidden bg-zinc-100 dark:bg-zinc-900">
+		<div class="relative max-h-[40vh] w-full overflow-hidden md:aspect-[3/1]">
 			<img src={imageUrl} alt={imageAlt} class="h-full w-full object-cover" />
-			<!-- Subtle gradient fade at the bottom for visual polish -->
+			<!-- Full-height fade to page background -->
 			<div
-				class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white/60 to-transparent"
+				class="absolute inset-0 bg-gradient-to-t from-white to-transparent dark:from-zinc-950"
 			></div>
 		</div>
 	</section>

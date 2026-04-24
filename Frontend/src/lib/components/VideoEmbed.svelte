@@ -15,14 +15,14 @@
 	let embedUrl = $derived(getEmbedUrl(url));
 </script>
 
-<div
-	class="relative aspect-16/9 w-full overflow-hidden rounded-xl shadow-xl ring-1 ring-slate-900/5 dark:ring-slate-100/10"
->
-	<iframe
-		src={embedUrl}
-		{title}
-		class="absolute top-0 left-0 h-full w-full border-0"
-		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-		allowfullscreen
-	></iframe>
+<div class="overflow-hidden rounded-2xl ring-1 ring-zinc-200 dark:ring-zinc-800">
+	<div class="relative aspect-video w-full bg-zinc-100 dark:bg-zinc-900">
+		<iframe
+			src={embedUrl}
+			{title}
+			class="absolute inset-0 h-full w-full border-0"
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+			allowfullscreen
+		></iframe>
+	</div>
 </div>

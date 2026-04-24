@@ -11,11 +11,11 @@
 </script>
 
 {#if isFeatured}
-	<div class="mt-2 border-t border-slate-100 pt-2 dark:border-slate-700">
+	<div class="mt-1 border-t border-zinc-100 pt-1 dark:border-zinc-800">
 		<a
 			{href}
 			{target}
-			class="block px-4 py-2 text-sm font-semibold text-red-600 transition-colors hover:bg-red-50 hover:text-red-700 focus:bg-red-50 focus:outline-none dark:text-red-400 dark:hover:bg-red-950 dark:hover:text-red-300 dark:focus:bg-red-950"
+			class="flex items-center rounded-lg px-3 py-2 text-sm font-semibold text-red-700 transition-colors hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:outline-none focus-visible:ring-inset dark:text-red-400 dark:hover:bg-red-900/20"
 			{onclick}
 		>
 			{title}
@@ -25,7 +25,7 @@
 	<a
 		{href}
 		{target}
-		class="block px-4 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-red-600 focus:bg-slate-50 focus:outline-none dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-red-400 dark:focus:bg-slate-700"
+		class="flex items-center rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-900 focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:outline-none focus-visible:ring-inset dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
 		{onclick}
 	>
 		{title}

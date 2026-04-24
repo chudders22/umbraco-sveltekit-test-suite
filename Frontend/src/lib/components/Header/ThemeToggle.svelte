@@ -7,12 +7,19 @@
 <button
 	type="button"
 	onclick={() => theme.toggleTheme()}
-	class="rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+	class="flex h-9 w-9 items-center justify-center rounded-lg text-zinc-500 transition-all hover:bg-zinc-100 hover:text-zinc-900 focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:outline-none dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:focus-visible:ring-red-400 dark:focus-visible:ring-offset-zinc-950"
 	aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
 >
 	{#if isDark}
 		<!-- Sun icon -->
-		<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+		<svg
+			class="h-4 w-4"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke-width="1.5"
+			stroke="currentColor"
+			aria-hidden="true"
+		>
 			<path
 				stroke-linecap="round"
 				stroke-linejoin="round"
@@ -21,7 +28,14 @@
 		</svg>
 	{:else}
 		<!-- Moon icon -->
-		<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+		<svg
+			class="h-4 w-4"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke-width="1.5"
+			stroke="currentColor"
+			aria-hidden="true"
+		>
 			<path
 				stroke-linecap="round"
 				stroke-linejoin="round"

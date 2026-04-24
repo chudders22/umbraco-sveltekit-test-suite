@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" aria-labelledby="title desc" role="img">
+  <title id="title">Website development glass icon</title>
+  <desc id="desc">Glass card with browser and code marks.</desc>
+  <defs>
+    <linearGradient id="bgA" x1="16" y1="12" x2="112" y2="116" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7dd3fc" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#a78bfa" stop-opacity="0.25"/>
+    </linearGradient>
+    <linearGradient id="glassStrokeA" x1="18" y1="18" x2="108" y2="108" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.3"/>
+    </linearGradient>
+    <filter id="blurA" x="0" y="0" width="128" height="128" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <circle cx="28" cy="30" r="14" fill="#7dd3fc" fill-opacity="0.35" filter="url(#blurA)"/>
+  <circle cx="98" cy="94" r="16" fill="#a78bfa" fill-opacity="0.35" filter="url(#blurA)"/>
+
+  <rect x="14" y="14" width="100" height="100" rx="24" fill="url(#bgA)"/>
+  <rect x="14" y="14" width="100" height="100" rx="24" stroke="url(#glassStrokeA)" stroke-width="2.5"/>
+
+  <rect x="28" y="32" width="72" height="62" rx="12" fill="#ffffff" fill-opacity="0.42"/>
+  <rect x="28" y="32" width="72" height="62" rx="12" stroke="#ffffff" stroke-opacity="0.7" stroke-width="2.2"/>
+  <path d="M28 48h72" stroke="#f8fafc" stroke-opacity="0.75" stroke-width="2"/>
+  <circle cx="36" cy="40" r="2.3" fill="#ffffff" fill-opacity="0.78"/>
+  <circle cx="44" cy="40" r="2.3" fill="#ffffff" fill-opacity="0.55"/>
+
+  <path d="m53 61-9 8 9 8" stroke="#0f172a" stroke-opacity="0.72" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m75 61 9 8-9 8" stroke="#0f172a" stroke-opacity="0.72" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m67 57-7 24" stroke="#0f172a" stroke-opacity="0.58" stroke-width="3.2" stroke-linecap="round"/>
+</svg>

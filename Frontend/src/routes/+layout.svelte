@@ -17,7 +17,7 @@
 <Header {...data.header} />
 
 <div
-	class="min-h-screen bg-white text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-100"
+	class="min-h-screen bg-white text-zinc-900 transition-colors dark:bg-zinc-950 dark:text-zinc-50"
 >
 	{@render children()}
 </div>

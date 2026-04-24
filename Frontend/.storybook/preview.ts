@@ -2,7 +2,7 @@ import type { Preview } from '@storybook/sveltekit';
 import '../src/routes/layout.css';
 
 const preview: Preview = {
-	tags: ['autodocs', 'snapshot', 'test-light', 'test-dark'],
+	tags: ['autodocs', 'snapshot'],
 	parameters: {
 		// Map custom tags to globals for '@storybook/addon-vitest' multi-theme testing
 		viewport: {
@@ -11,14 +11,14 @@ const preview: Preview = {
 					name: 'Mobile',
 					styles: {
 						width: '375px',
-						height: '667px',
+						height: '667px'
 					},
-					type: 'mobile',
-				},
-			},
+					type: 'mobile'
+				}
+			}
 		},
 		test: {
-			dangerouslyIgnoreUnhandledErrors: true,
+			dangerouslyIgnoreUnhandledErrors: true
 		},
 		controls: {
 			matchers: {
@@ -31,7 +31,7 @@ const preview: Preview = {
 			// 'todo' - show a11y violations in the test UI only
 			// 'error' - fail CI on a11y violations
 			// 'off' - skip a11y checks entirely
-			test: 'error',
+			test: 'error'
 		}
 	},
 
@@ -66,15 +66,6 @@ const preview: Preview = {
 			return Story();
 		}
 	]
-};
-
-export const tags = {
-	'test-light': {
-		globals: { theme: 'light' }
-	},
-	'test-dark': {
-		globals: { theme: 'dark' }
-	}
 };
 
 export default preview;

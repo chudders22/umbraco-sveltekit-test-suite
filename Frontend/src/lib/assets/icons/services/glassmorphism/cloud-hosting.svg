@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" aria-labelledby="title desc" role="img">
+  <title id="title">Cloud hosting glass icon</title>
+  <desc id="desc">Centered glass cloud over a balanced frosted server panel.</desc>
+  <defs>
+    <linearGradient id="bgB" x1="18" y1="14" x2="114" y2="114" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#67e8f9" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#93c5fd" stop-opacity="0.24"/>
+    </linearGradient>
+    <linearGradient id="strokeB" x1="20" y1="16" x2="108" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.28"/>
+    </linearGradient>
+    <filter id="blurB" x="0" y="0" width="128" height="128" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+  </defs>
+
+  <circle cx="32" cy="28" r="12" fill="#22d3ee" fill-opacity="0.34" filter="url(#blurB)"/>
+  <circle cx="98" cy="98" r="15" fill="#60a5fa" fill-opacity="0.28" filter="url(#blurB)"/>
+
+  <rect x="14" y="14" width="100" height="100" rx="24" fill="url(#bgB)"/>
+  <rect x="14" y="14" width="100" height="100" rx="24" stroke="url(#strokeB)" stroke-width="2.5"/>
+
+  <path d="M39 70h50c10 0 17-7 17-16 0-9-6-15-15-16-3-12-14-20-27-20-12 0-22 6-26 16-10 1-17 8-17 18 0 11 8 18 18 18z" fill="#ffffff" fill-opacity="0.42"/>
+  <path d="M39 70h50c10 0 17-7 17-16 0-9-6-15-15-16-3-12-14-20-27-20-12 0-22 6-26 16-10 1-17 8-17 18 0 11 8 18 18 18z" stroke="#ffffff" stroke-opacity="0.78" stroke-width="2.2"/>
+
+  <rect x="34" y="76" width="60" height="26" rx="9" fill="#ffffff" fill-opacity="0.44"/>
+  <rect x="34" y="76" width="60" height="26" rx="9" stroke="#ffffff" stroke-opacity="0.74" stroke-width="2.1"/>
+  <path d="M45 89h7" stroke="#0f172a" stroke-opacity="0.56" stroke-width="3" stroke-linecap="round"/>
+  <path d="M58 89h7" stroke="#0f172a" stroke-opacity="0.56" stroke-width="3" stroke-linecap="round"/>
+  <path d="M71 89h12" stroke="#0f172a" stroke-opacity="0.56" stroke-width="3" stroke-linecap="round"/>
+</svg>

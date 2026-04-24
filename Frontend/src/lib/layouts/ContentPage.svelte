@@ -13,8 +13,8 @@
 {/if}
 
 <main
-	class="container mx-auto px-4 py-8 {isImageOffsetHeader
-		? 'relative z-10 -mt-24	 bg-white/20 shadow-lg backdrop-blur-sm md:rounded-t-2xl md:bg-white dark:bg-slate-900/20 dark:md:bg-slate-900'
+	class="container mx-auto px-4 py-12 {isImageOffsetHeader
+		? 'relative z-10 -mt-24 bg-white/30 ring-1 ring-zinc-200/50 backdrop-blur-sm md:rounded-t-2xl md:bg-white dark:bg-zinc-950/30 dark:ring-zinc-800/50 dark:md:bg-zinc-950'
 		: ''}"
 >
 	{#if content.properties?.pageContent?.items}

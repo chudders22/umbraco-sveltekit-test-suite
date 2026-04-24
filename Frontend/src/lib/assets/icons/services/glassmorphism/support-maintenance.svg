@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" aria-labelledby="title desc" role="img">
+  <title id="title">Support maintenance glass icon</title>
+  <desc id="desc">Frosted headset and service badge.</desc>
+  <defs>
+    <linearGradient id="bgC" x1="14" y1="18" x2="112" y2="114" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5eead4" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0.24"/>
+    </linearGradient>
+    <linearGradient id="strokeC" x1="20" y1="16" x2="108" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.3"/>
+    </linearGradient>
+    <filter id="blurC" x="0" y="0" width="128" height="128" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <circle cx="30" cy="96" r="14" fill="#2dd4bf" fill-opacity="0.32" filter="url(#blurC)"/>
+  <circle cx="94" cy="28" r="14" fill="#38bdf8" fill-opacity="0.3" filter="url(#blurC)"/>
+
+  <rect x="14" y="14" width="100" height="100" rx="24" fill="url(#bgC)"/>
+  <rect x="14" y="14" width="100" height="100" rx="24" stroke="url(#strokeC)" stroke-width="2.5"/>
+
+  <path d="M28 65c0-20 16-36 36-36s36 16 36 36" stroke="#ffffff" stroke-opacity="0.8" stroke-width="5" stroke-linecap="round"/>
+  <rect x="24" y="63" width="13" height="23" rx="6" fill="#ffffff" fill-opacity="0.46"/>
+  <rect x="24" y="63" width="13" height="23" rx="6" stroke="#ffffff" stroke-opacity="0.7" stroke-width="2"/>
+  <rect x="91" y="63" width="13" height="23" rx="6" fill="#ffffff" fill-opacity="0.46"/>
+  <rect x="91" y="63" width="13" height="23" rx="6" stroke="#ffffff" stroke-opacity="0.7" stroke-width="2"/>
+
+  <path d="M37 86c5 10 14 15 27 15h9" stroke="#0f172a" stroke-opacity="0.52" stroke-width="4.5" stroke-linecap="round"/>
+  <circle cx="80" cy="94" r="12" fill="#ffffff" fill-opacity="0.5"/>
+  <circle cx="80" cy="94" r="12" stroke="#ffffff" stroke-opacity="0.78" stroke-width="2.1"/>
+  <path d="M80 87v14" stroke="#0f172a" stroke-opacity="0.6" stroke-width="3.4" stroke-linecap="round"/>
+  <path d="M73 94h14" stroke="#0f172a" stroke-opacity="0.6" stroke-width="3.4" stroke-linecap="round"/>
+</svg>

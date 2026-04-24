@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { components } from '$lib/types/umbraco';
-	import { PUBLIC_UMBRACO_API_URL } from '$env/static/public';
 
 	interface Props {
 		post: components['schemas']['BlogArticleContentResponseModel'];
@@ -10,64 +9,54 @@
 </script>
 
 <article
-	class="relative flex flex-col overflow-hidden rounded-xl bg-white shadow-xl ring-1 ring-slate-900/5 transition-transform hover:-translate-y-1 hover:shadow-2xl dark:bg-slate-800 dark:ring-slate-100/10"
+	class="group relative flex h-full flex-col border-l-2 border-l-zinc-200 py-1 pl-6 transition-all duration-200 focus-within:border-l-red-500 hover:border-l-red-500 dark:border-l-zinc-800 dark:focus-within:border-l-red-500 dark:hover:border-l-red-500"
 >
-	<!-- Optional Image -->
-	{#if post.properties?.openGraphImage?.[0]?.url}
-		<div class="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-700">
-			<img
-				src={post.properties.openGraphImage[0].url}
-				alt={post.name}
-				class="h-full w-full object-cover"
-			/>
-		</div>
+	<time
+		datetime={post.createDate}
+		class="mb-3 block text-xs font-medium tracking-wider text-zinc-400 uppercase dark:text-zinc-500"
+	>
+		{new Date(post.createDate).toLocaleDateString('en-GB', {
+			day: 'numeric',
+			month: 'short',
+			year: 'numeric'
+		})}
+	</time>
+
+	<h3
+		class="mb-3 font-display text-lg leading-snug font-bold tracking-tight text-zinc-900 transition-colors group-focus-within:text-red-600 group-hover:text-red-600 dark:text-zinc-50 dark:group-focus-within:text-red-500 dark:group-hover:text-red-500"
+	>
+		<a
+			href={post.route?.path}
+			class="rounded-sm focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:outline-none focus-visible:ring-inset dark:focus-visible:ring-red-400"
+		>
+			<span class="absolute inset-0" aria-hidden="true"></span>
+			{post.name}
+		</a>
+	</h3>
+
+	{#if post.properties?.metaDescription}
+		<p class="mb-5 line-clamp-3 flex-1 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+			{post.properties.metaDescription}
+		</p>
 	{/if}
 
-	<div class="flex flex-1 flex-col p-6">
-		<div class="mb-4 flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
-			<time datetime={post.createDate}>
-				{new Date(post.createDate).toLocaleDateString('en-GB', {
-					day: 'numeric',
-					month: 'short',
-					year: 'numeric'
-				})}
-			</time>
-		</div>
-
-		<h3 class="mb-2 text-xl leading-tight font-bold text-slate-900 dark:text-white">
-			<!-- Note the absolute inset-0 span which makes the whole relative card clickable -->
-			<a
-				href={post.route?.path}
-				class="rounded-sm transition-colors hover:text-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 dark:hover:text-red-400"
-			>
-				<span class="absolute inset-0" aria-hidden="true"></span>
-				{post.name}
-			</a>
-		</h3>
-
-		{#if post.properties?.metaDescription}
-			<p class="mb-6 line-clamp-3 flex-1 text-sm text-slate-600 dark:text-slate-300">
-				{post.properties.metaDescription}
-			</p>
-		{/if}
-
-		<div
-			class="group mt-auto flex items-center text-sm font-semibold text-red-600 dark:text-red-400"
+	<span
+		class="mt-auto flex items-center gap-1 text-xs font-semibold tracking-wide text-red-600 dark:text-red-400"
+		aria-hidden="true"
+	>
+		Read article
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 16 16"
+			fill="currentColor"
+			class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1"
+			aria-hidden="true"
 		>
-			Read article
-			<svg
-				class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke="currentColor"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M14 5l7 7m0 0l-7 7m7-7H3"
-				/>
-			</svg>
-		</div>
-	</div>
+			<path
+				fill-rule="evenodd"
+				d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z"
+				clip-rule="evenodd"
+			/>
+		</svg>
+	</span>
 </article>

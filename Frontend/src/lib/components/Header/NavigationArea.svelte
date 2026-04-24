@@ -42,7 +42,6 @@
 		{@const linkProp = itemProps.title.content.properties.titleLink[0]}
 		<NavigationToggle {isOpen} title={linkProp.title || 'Link'} onclick={toggleMenu} />
 	{:else if itemProps.title?.content?.contentType === 'navigationTitle'}
-		<!-- Non-clickable Visual Grouping Title -->
 		<NavigationToggle
 			{isOpen}
 			title={itemProps.title.content.properties?.title || 'Menu'}
@@ -54,7 +53,7 @@
 	{#if itemProps.links && itemProps.links.length > 0}
 		{#if isOpen}
 			<div
-				class="absolute top-full -left-4 z-50 w-56 rounded-xl border border-slate-100 bg-white py-2 shadow-xl dark:border-slate-700 dark:bg-slate-800"
+				class="absolute top-full left-0 z-50 mt-1 min-w-[200px] rounded-xl bg-white p-1 shadow-xl ring-1 shadow-zinc-900/5 ring-zinc-200/80 dark:bg-zinc-900 dark:shadow-zinc-950/50 dark:ring-zinc-800"
 			>
 				{#each itemProps.links as link}
 					<NavigationLink
