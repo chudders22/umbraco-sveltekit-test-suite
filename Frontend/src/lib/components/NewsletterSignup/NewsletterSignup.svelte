@@ -27,10 +27,9 @@
 		errorMessage = '';
 
 		try {
-			// Replace with your newsletter provider endpoint (Mailchimp, ConvertKit, etc.)
-			await new Promise((resolve) => setTimeout(resolve, 800));
-			status = 'success';
-			email = '';
+			// TODO: Wire up to a real newsletter provider (e.g. Mailchimp, ConvertKit).
+			// Until then this always throws so the stub is never silently "successful".
+			throw new Error('Newsletter signup is not yet implemented.');
 		} catch {
 			status = 'error';
 			errorMessage = 'Something went wrong. Please try again.';
@@ -107,12 +106,16 @@
 					required
 					autocomplete="email"
 					disabled={status === 'loading'}
-					class="min-w-0 flex-1 rounded-lg border border-zinc-200 bg-white px-4 py-2.5
+					aria-invalid={status === 'error' ? true : undefined}
+					class="min-w-0 flex-1 rounded-lg border px-4 py-2.5
 						text-zinc-900 placeholder:text-zinc-400
 						focus:border-transparent focus:ring-2 focus:ring-red-600 focus:outline-none
 						disabled:cursor-not-allowed disabled:opacity-50
-						dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50
-						dark:placeholder:text-zinc-500 dark:focus:ring-red-400"
+						dark:text-zinc-50
+						dark:placeholder:text-zinc-500 dark:focus:ring-red-400
+						{status === 'error'
+						? 'border-red-500 dark:border-red-500 bg-red-50 dark:bg-red-950/20'
+						: 'border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900'}"
 				/>
 				<button
 					type="submit"

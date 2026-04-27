@@ -1,4 +1,6 @@
 <script lang="ts">
+	import ProgressiveImage from '$lib/components/ProgressiveImage/ProgressiveImage.svelte';
+
 	interface Props {
 		sectionLabel?: string | null;
 		projectTitle?: string | null;
@@ -35,11 +37,7 @@
 			<div class="lg:col-span-3">
 				<div class="relative aspect-video overflow-hidden rounded-2xl">
 					{#if hasImage}
-						<img
-							src={img!.url}
-							alt={img!.name}
-							class="h-full w-full object-cover"
-						/>
+						<ProgressiveImage src={img!.url} alt={img!.name} />
 						<div
 							class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent dark:from-zinc-950/50"
 							aria-hidden="true"

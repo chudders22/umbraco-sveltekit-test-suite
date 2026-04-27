@@ -18,9 +18,18 @@
 </script>
 
 <section
-	class="relative flex min-h-[40vh] items-center overflow-hidden bg-zinc-50 bg-cover bg-center bg-no-repeat dark:bg-zinc-950"
-	style={bgImageUrl ? `background-image: url('${bgImageUrl}')` : undefined}
+	class="relative flex min-h-[40vh] items-center overflow-hidden bg-zinc-50 dark:bg-zinc-950"
 >
+	<!-- Hero image as <img> (not CSS background) so browsers can LCP-optimise and preload it -->
+	{#if bgImageUrl}
+		<img
+			src={bgImageUrl}
+			alt=""
+			aria-hidden="true"
+			fetchpriority="high"
+			class="absolute inset-0 h-full w-full object-cover object-center"
+		/>
+	{/if}
 	<!-- Directional gradient: adapts to light/dark -->
 	<div
 		class="absolute inset-0 bg-gradient-to-r from-zinc-50/95 via-zinc-50/75 to-transparent dark:from-zinc-950/95 dark:via-zinc-950/80 dark:to-zinc-950/30"

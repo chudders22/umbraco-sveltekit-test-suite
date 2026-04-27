@@ -17,9 +17,19 @@
 	let { title, stats }: Props = $props();
 	let items = $derived(stats?.items || []);
 
-	// Wrap %, +, . in brand-colour spans — number digits stay in heading colour
+	// Wrap %, +, . in brand-colour spans — number digits stay in heading colour.
+	// escapeHtml runs first to prevent XSS if a CMS editor enters HTML in this plain-text field.
+	function escapeHtml(str: string): string {
+		return str
+			.replace(/&/g, '&amp;')
+			.replace(/</g, '&lt;')
+			.replace(/>/g, '&gt;')
+			.replace(/"/g, '&quot;')
+			.replace(/'/g, '&#039;');
+	}
+
 	function highlightSymbols(value: string): string {
-		return value.replace(
+		return escapeHtml(value).replace(
 			/([%+.])/g,
 			'<span class="text-[0.6em] text-red-600 dark:text-red-500">$1</span>'
 		);

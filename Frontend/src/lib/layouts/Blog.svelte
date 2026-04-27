@@ -17,6 +17,7 @@
 	class="container mx-auto px-4 py-12 {isImageOffsetHeader
 		? 'relative z-10 -mt-24 bg-white/30 ring-1 ring-zinc-200/50 backdrop-blur-sm md:rounded-t-2xl md:bg-white dark:bg-zinc-950/30 dark:ring-zinc-800/50 dark:md:bg-zinc-950'
 		: ''}"
+	id="main-content"
 >
 	<div class="mb-10">
 		<p class="mb-2 text-xs font-semibold tracking-widest text-red-600 uppercase dark:text-red-400">

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { untrack } from 'svelte';
+	import { page } from '$app/state';
 	import type { components } from '$lib/types/umbraco';
-	import { PUBLIC_UMBRACO_API_URL } from '$env/static/public';
 	import BlogArticleCard from './BlogArticleCard.svelte';
 	import Button from '../Button/Button.svelte';
 
@@ -9,23 +9,22 @@
 		pageSize?: number | null;
 		title?: string | null;
 		subTitle?: string | null;
+		initialBlogPosts?: components['schemas']['BlogArticleContentResponseModel'][];
 	}
 
-	// We receive pageSize directly because BlockList.svelte spreads item.content.properties
-	let { pageSize = 6, title, subTitle }: Props = $props();
+	let { pageSize = 6, title, subTitle, initialBlogPosts: initialBlogPostsProp }: Props = $props();
 
-	// Initial data loaded from SSR (via +page.server.ts)
+	// Prefer explicitly passed prop (e.g. from Storybook); fall back to SSR page data.
+	// untrack prevents Svelte from warning about capturing a reactive prop in $state() init —
+	// this is intentional: posts is mutable local state seeded once from the initial load.
 	let posts = $state<components['schemas']['BlogArticleContentResponseModel'][]>(
-		$page.data.initialBlogPosts || []
+		untrack(() => initialBlogPostsProp ?? page.data.initialBlogPosts ?? [])
 	);
 
-	// Start skip offset based on how many posts the server actually loaded initialy
-	let skip = $state($page.data.initialBlogPosts ? $page.data.initialBlogPosts.length : 6);
+	let skip = $state(untrack(() => posts.length || pageSize || 6));
 	let loading = $state(false);
 	let allFetched = $state(false);
 
-	// if total fetched posts was shorter than what was requested naturally or if allFetched is true
-	// initial load will have posts.length <= numericPageSize. We should assume hasMore true until proven otherwise.
 	let hasMore = $derived(!allFetched && posts.length >= (pageSize || 6));
 
 	async function loadMore() {
@@ -34,7 +33,7 @@
 
 		try {
 			const res = await fetch(
-				`${PUBLIC_UMBRACO_API_URL}/umbraco/delivery/api/v2/content?filter=contentType:blogArticle&sort=createDate:desc&take=${pageSize || 6}&skip=${skip}`
+				`/api/blog-posts?take=${pageSize || 6}&skip=${skip}`
 			);
 
 			if (res.ok) {
@@ -44,12 +43,11 @@
 				posts = [...posts, ...newPosts];
 				skip += pageSize || 6;
 
-				// If we fetched fewer items than the page size, we've reached the end
 				if (newPosts.length < (pageSize || 6)) {
 					allFetched = true;
 				}
 			} else {
-				console.error('Failed to load more posts');
+				console.error('Failed to load more posts:', res.status);
 			}
 		} catch (e) {
 			console.error('Error fetching more posts:', e);

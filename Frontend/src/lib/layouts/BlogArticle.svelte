@@ -16,6 +16,7 @@
 	class="container mx-auto px-4 py-12 md:px-8 lg:px-12 {isImageOffsetHeader
 		? 'relative z-10 -mt-24 bg-white/30 ring-1 ring-zinc-200/50 backdrop-blur-sm md:rounded-t-2xl md:bg-white dark:bg-zinc-950/30 dark:ring-zinc-800/50 dark:md:bg-zinc-950'
 		: ''}"
+	id="main-content"
 >
 	<header class="mb-12 border-b border-zinc-200 pb-8 dark:border-zinc-800">
 		<h1

@@ -35,19 +35,7 @@ const mockPosts = [
 const meta = {
 	title: 'Blocks/BlogListing',
 	component: BlogListing,
-	tags: ['autodocs'],
-	parameters: {
-		// Mock the SvelteKit $page store for the story
-		sveltekit_experimental: {
-			stores: {
-				page: {
-					data: {
-						initialBlogPosts: mockPosts
-					}
-				}
-			}
-		}
-	}
+	tags: ['autodocs']
 } satisfies Meta<any>;
 
 export default meta;
@@ -55,23 +43,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {
-		pageSize: 2
+		pageSize: 2,
+		initialBlogPosts: mockPosts
 	}
 };
 
 export const EmptyState: Story = {
 	args: {
-		pageSize: 3
-	},
-	parameters: {
-		sveltekit_experimental: {
-			stores: {
-				page: {
-					data: {
-						initialBlogPosts: []
-					}
-				}
-			}
-		}
+		pageSize: 3,
+		initialBlogPosts: []
 	}
 };

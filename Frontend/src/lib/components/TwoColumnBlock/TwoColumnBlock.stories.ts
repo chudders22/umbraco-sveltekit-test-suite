@@ -40,7 +40,7 @@ export const ImageRight: Story = {
 		subTitle: 'A full-service digital agency with 10+ years of experience.',
 		content: sampleContent,
 		image: sampleImage,
-		imagePosition: 'right'
+		imagePosition: false
 	}
 };
 
@@ -50,7 +50,7 @@ export const ImageLeft: Story = {
 		subTitle: 'We start with the why before touching a line of code.',
 		content: sampleContent,
 		image: sampleImage,
-		imagePosition: 'left'
+		imagePosition: true
 	}
 };
 
@@ -60,7 +60,7 @@ export const WithLink: Story = {
 		subTitle: 'Transparent, collaborative, and relentlessly iterative.',
 		content: sampleContent,
 		image: sampleImage,
-		imagePosition: 'right',
+		imagePosition: false,
 		link: sampleLink
 	}
 };
@@ -71,7 +71,7 @@ export const NoImage: Story = {
 		subTitle: 'From seed-stage startups to enterprise organisations.',
 		content: sampleContent,
 		image: null,
-		imagePosition: 'right',
+		imagePosition: false,
 		link: sampleLink
 	}
 };

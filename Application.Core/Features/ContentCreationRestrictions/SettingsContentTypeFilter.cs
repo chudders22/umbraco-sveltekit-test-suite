@@ -12,6 +12,11 @@ namespace Application.Core.Features.ContentCreationRestrictions
 {
     public class SettingsContentTypeFilter : IContentTypeFilter
     {
+        // A reasonable upper bound for child nodes under the Settings node.
+        // The Settings node is a configuration container and should never have
+        // thousands of children; int.MaxValue would cause unbounded DB queries.
+        private const int MaxSettingsChildren = 500;
+
         private readonly IContentService _contentService;
 
         public SettingsContentTypeFilter(IContentService contentService)
@@ -33,24 +38,23 @@ namespace Application.Core.Features.ContentCreationRestrictions
                 return Task.FromResult(contentTypes);
             }
 
-            // Get the parent node to check if it's the Settings node
+            // IContentService does not expose async paged-query overloads in Umbraco 17.
+            // The async method signature is required by IContentTypeFilter, but this
+            // implementation is synchronous. Revisit when async paged queries are available.
             var parent = _contentService.GetById(parentContentKey.Value);
 
             if (parent != null && parent.ContentType.Alias.Equals("settings", StringComparison.InvariantCultureIgnoreCase))
             {
-                // Get all existing children aliases, using the full method signature to avoid obsolete warning
-                var existingChildrenAliases = _contentService.GetPagedChildren(parent.Id, 0, int.MaxValue, out _, null, null, null, false)
+                var existingChildrenAliases = _contentService.GetPagedChildren(parent.Id, 0, MaxSettingsChildren, out _, null, null, null, false)
                                                              .Select(c => c.ContentType.Alias)
                                                              .Distinct()
                                                              .ToList();
 
-                // Filter out content types that already have an instance created under this node
                 var filteredContentTypes = contentTypes.Where(ct => !existingChildrenAliases.Contains(ct.Alias)).ToList();
 
                 return Task.FromResult<IEnumerable<ContentTypeSort>>(filteredContentTypes);
             }
 
-            // If not the Settings node, return the list unmodified
             return Task.FromResult(contentTypes);
         }
     }

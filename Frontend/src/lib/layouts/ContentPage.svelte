@@ -21,7 +21,7 @@ route={content.route?.path}
 {/if}
 {/if}
 
-<main class="container mx-auto px-4 py-12">
+<main id="main-content" class="container mx-auto px-4 py-12">
 {#if content.properties?.pageContent?.items}
 <BlockList items={content.properties.pageContent.items} />
 {/if}
