@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ButtonLink from './ButtonLink.svelte';
+	import ButtonLink from '../ButtonLink/ButtonLink.svelte';
 
 	interface Props {
 		heading?: string | null;

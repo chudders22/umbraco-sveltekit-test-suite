@@ -1,12 +1,12 @@
 <script lang="ts">
-	import ButtonLink from './ButtonLink.svelte';
+	import ButtonLink from '../ButtonLink/ButtonLink.svelte';
 
 	interface Props {
 		heading?: string | null;
 		subTitle?: string | null;
 		content?: { markup?: string | null } | null;
 		image?: Array<{ url: string; name: string; mediaType: string; id: string; properties: object }> | null;
-		imagePosition?: 'left' | 'right' | null;
+		imagePosition?: boolean | null;
 		link?: Array<{
 			title?: string | null;
 			url?: string | null;
@@ -22,7 +22,7 @@
 	let hasContent = $derived(!!(heading || subTitle || content?.markup));
 	let hasImage = $derived(!!img?.url);
 	let isEmpty = $derived(!hasContent && !hasImage);
-	let imageFirst = $derived(imagePosition === 'left');
+	let imageFirst = $derived(imagePosition === true);
 </script>
 
 <section class="bg-white py-12 dark:bg-zinc-950 md:py-20">

@@ -1,23 +1,28 @@
 <script lang="ts">
-	import type { components } from '$lib/types/umbraco';
-	import BlockList from '$lib/components/BlockList.svelte';
-	import SingleBlock from '$lib/components/SingleBlock.svelte';
-	import { isImageOffsetPageHeader } from '$lib/utils/pageHeaderUtils';
+import type { components } from '$lib/types/umbraco';
+import BlockList from '$lib/components/BlockList.svelte';
+import SingleBlock from '$lib/components/SingleBlock.svelte';
+import ImageOffsetPageHeader from '$lib/components/PageHeaders/ImageOffsetPageHeader.svelte';
+import { isImageOffsetPageHeader } from '$lib/utils/pageHeaderUtils';
 
-	let { content }: { content: components['schemas']['ContentPageContentResponseModel'] } = $props();
-	let isImageOffsetHeader = $derived(isImageOffsetPageHeader(content.properties?.pageHeader));
+let { content }: { content: components['schemas']['ContentPageContentResponseModel'] } = $props();
 </script>
 
 {#if content.properties?.pageHeader}
-	<SingleBlock block={content.properties.pageHeader} />
+{#if isImageOffsetPageHeader(content.properties.pageHeader)}
+<!-- Render directly so we can pass page-level data (title, route) alongside block props -->
+<ImageOffsetPageHeader
+image={(content.properties.pageHeader.content.properties as any).image}
+title={content.name}
+route={content.route?.path}
+/>
+{:else}
+<SingleBlock block={content.properties.pageHeader} />
+{/if}
 {/if}
 
-<main
-	class="container mx-auto px-4 py-12 {isImageOffsetHeader
-		? 'relative z-10 -mt-24 bg-white/30 ring-1 ring-zinc-200/50 backdrop-blur-sm md:rounded-t-2xl md:bg-white dark:bg-zinc-950/30 dark:ring-zinc-800/50 dark:md:bg-zinc-950'
-		: ''}"
->
-	{#if content.properties?.pageContent?.items}
-		<BlockList items={content.properties.pageContent.items} />
-	{/if}
+<main class="container mx-auto px-4 py-12">
+{#if content.properties?.pageContent?.items}
+<BlockList items={content.properties.pageContent.items} />
+{/if}
 </main>

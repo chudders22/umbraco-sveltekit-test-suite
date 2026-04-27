@@ -22,10 +22,10 @@
 	let hasTags = $derived(!!tags?.length);
 </script>
 
-<section class="bg-zinc-950 py-12 md:py-20">
+<section class="py-12 md:py-20">
 	<div class="container mx-auto px-4">
 		{#if sectionLabel}
-			<p class="mb-8 text-xs font-semibold uppercase tracking-widest text-red-500">
+			<p class="mb-8 text-xs font-semibold uppercase tracking-widest text-red-600 dark:text-red-500">
 				{sectionLabel}
 			</p>
 		{/if}
@@ -41,40 +41,42 @@
 							class="h-full w-full object-cover"
 						/>
 						<div
-							class="absolute inset-0 bg-gradient-to-t from-zinc-950/50 to-transparent"
+							class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent dark:from-zinc-950/50"
 							aria-hidden="true"
 						></div>
 					{:else}
-						<div class="h-full w-full bg-zinc-800" aria-hidden="true"></div>
+						<div class="h-full w-full bg-zinc-200 dark:bg-zinc-800" aria-hidden="true"></div>
 					{/if}
 				</div>
 			</div>
 
 			<!-- Content -->
 			<div class="lg:col-span-2">
+				<div class="mb-6 h-0.5 w-16 bg-red-600" aria-hidden="true"></div>
+
 				{#if client}
-					<p class="mb-2 text-xs font-semibold uppercase tracking-widest text-zinc-400">
+					<p class="mb-2 text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
 						{client}
 					</p>
 				{/if}
 
 				{#if projectTitle}
 					<h2
-						class="font-display mb-4 text-3xl font-bold tracking-tight text-zinc-50 md:text-4xl"
+						class="font-display mb-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 md:text-4xl"
 					>
 						{projectTitle}
 					</h2>
 				{/if}
 
 				{#if description}
-					<p class="mb-6 leading-relaxed text-zinc-300">{description}</p>
+					<p class="mb-6 leading-relaxed text-zinc-600 dark:text-zinc-300">{description}</p>
 				{/if}
 
 				{#if hasTags}
-					<div class="flex flex-wrap gap-2">
+					<div class="mb-2 flex flex-wrap gap-2">
 						{#each tags! as tag}
 							<span
-								class="inline-flex items-center rounded-full border border-zinc-700 px-3 py-1 text-xs font-medium text-zinc-300"
+								class="inline-flex items-center rounded-full border border-zinc-300 bg-white px-3 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300"
 							>
 								{tag}
 							</span>
@@ -86,7 +88,7 @@
 					<a
 						href={cta.url}
 						target={cta.target ?? '_self'}
-						class="group mt-6 flex items-center gap-2 font-semibold text-red-400 hover:text-red-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-red-400"
+						class="group mt-6 flex items-center gap-2 font-semibold text-red-600 hover:text-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-red-500 dark:text-red-400 dark:hover:text-red-300"
 					>
 						{cta.title ?? 'View project'}
 						<svg

@@ -2,6 +2,7 @@
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import Header from '$lib/components/Header/Header.svelte';
+	import Footer from '$lib/components/Footer/Footer.svelte';
 	import { theme } from '$lib/stores/themeStore';
 	import { onMount } from 'svelte';
 
@@ -21,3 +22,5 @@
 >
 	{@render children()}
 </div>
+
+<Footer {...(data.footer ?? {})} />
