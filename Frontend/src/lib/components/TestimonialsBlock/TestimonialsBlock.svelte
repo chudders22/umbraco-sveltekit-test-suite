@@ -32,20 +32,18 @@
 >
 	<div class="container mx-auto px-4">
 		{#if title || subTitle}
-			<div class="mb-8 grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-4">
-				<header>
-					{#if title}
-						<h2
-							class="font-display text-3xl font-semibold tracking-widest text-zinc-500 uppercase md:text-4xl dark:text-zinc-400"
-						>
-							{title}
-						</h2>
-					{/if}
-					{#if subTitle}
-						<p class="mt-1 text-lg leading-relaxed text-zinc-500 dark:text-zinc-400">{subTitle}</p>
-					{/if}
-				</header>
-			</div>
+			<header class="mb-8 lg:w-1/2">
+				{#if title}
+					<h2
+						class="font-display text-3xl font-semibold tracking-widest text-zinc-500 uppercase md:text-4xl dark:text-zinc-400"
+					>
+						{title}
+					</h2>
+				{/if}
+				{#if subTitle}
+					<p class="mt-1 text-lg leading-relaxed text-zinc-500 dark:text-zinc-400">{subTitle}</p>
+				{/if}
+			</header>
 		{/if}
 
 		{#if items.length === 0}

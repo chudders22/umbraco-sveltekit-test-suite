@@ -3,40 +3,35 @@ import type { components } from '$lib/types/umbraco';
 import { PUBLIC_UMBRACO_API_URL } from '$env/static/public';
 
 export const load: LayoutServerLoad = async ({ fetch }) => {
-	try {
-		// Fetch the Header component. We're querying the Delivery API for items of type 'header'.
-		// Assuming there is only one Header item created under Settings.
-		const response = await fetch(
-			`${PUBLIC_UMBRACO_API_URL}/umbraco/delivery/api/v2/content?filter=contentType:header&expand=properties[$all]`
-		);
-
-		if (!response.ok) {
-			console.error(
-				`Failed to fetch Umbraco Header:`,
-				response.status,
-				response.statusText,
-				`${PUBLIC_UMBRACO_API_URL}/umbraco/delivery/api/v2/content/?filter=contentType:header&expand=properties[$all]`
-			);
-			return {
-				header: null
-			};
+	const fetchJson = async (url: string) => {
+		const res = await fetch(url);
+		if (!res.ok) {
+			console.error(`Failed to fetch ${url}:`, res.status, res.statusText);
+			return null;
 		}
+		return res.json();
+	};
 
-		const data = (await response.json()) as components['schemas']['PagedIApiContentResponseModel'];
+	const [headerData, footerData] = await Promise.all([
+		fetchJson(
+			`${PUBLIC_UMBRACO_API_URL}/umbraco/delivery/api/v2/content?filter=contentType:header&expand=properties[$all]`
+		),
+		fetchJson(
+			`${PUBLIC_UMBRACO_API_URL}/umbraco/delivery/api/v2/content?filter=contentType:footer&expand=properties[$all]`
+		)
+	]);
 
-		// If we found a header, return its properties. Otherwise null.
-		const header =
-			data.total > 0 && data.items.length > 0
-				? (data.items[0] as components['schemas']['HeaderContentResponseModel'])
-				: null;
+	const header =
+		(headerData as components['schemas']['PagedIApiContentResponseModel'])?.total > 0
+			? ((headerData.items[0] as components['schemas']['HeaderContentResponseModel'])
+					?.properties ?? null)
+			: null;
 
-		return {
-			header: header?.properties || null
-		};
-	} catch (e) {
-		console.error('Error fetching header:', e);
-		return {
-			header: null
-		};
-	}
+	const footer =
+		(footerData as components['schemas']['PagedIApiContentResponseModel'])?.total > 0
+			? ((footerData.items[0] as components['schemas']['FooterContentResponseModel'])
+					?.properties ?? null)
+			: null;
+
+	return { header, footer };
 };

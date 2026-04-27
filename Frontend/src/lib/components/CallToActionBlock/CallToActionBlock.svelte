@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { components } from '$lib/types/umbraco';
-	import ButtonLink from './ButtonLink.svelte';
+	import ButtonLink from '../ButtonLink/ButtonLink.svelte';
 
 	let { heading, text, actions, image }: components['schemas']['CallToActionBlockPropertiesModel'] =
 		$props();

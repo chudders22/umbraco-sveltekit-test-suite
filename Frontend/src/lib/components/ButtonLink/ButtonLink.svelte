@@ -5,7 +5,7 @@
 		buttonBaseClasses,
 		getButtonVariantClasses,
 		getButtonSizeClasses
-	} from './button-styles';
+	} from '../Button/button-styles';
 
 	interface Props {
 		href: string;

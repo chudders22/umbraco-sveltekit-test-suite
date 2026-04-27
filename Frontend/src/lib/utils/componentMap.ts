@@ -1,23 +1,23 @@
 import type { Component } from 'svelte';
-import HeadingBlock from '../components/HeadingBlock.svelte';
-import TextBlock from '../components/TextBlock.svelte';
-import ImageGallery from '../components/ImageGallery.svelte';
-import VideoEmbed from '../components/VideoEmbed.svelte';
-import CodeEmbed from '../components/CodeEmbed.svelte';
-import HeroBlock from '../components/HeroBlock.svelte';
+import HeadingBlock from '../components/HeadingBlock/HeadingBlock.svelte';
+import TextBlock from '../components/TextBlock/TextBlock.svelte';
+import ImageGallery from '../components/ImageGallery/ImageGallery.svelte';
+import VideoEmbed from '../components/VideoEmbed/VideoEmbed.svelte';
+import CodeEmbed from '../components/CodeEmbed/CodeEmbed.svelte';
+import HeroBlock from '../components/HeroBlock/HeroBlock.svelte';
 import BlogListing from '../components/BlogListing/BlogListing.svelte';
-import CallToActionBlock from '../components/CallToActionBlock.svelte';
+import CallToActionBlock from '../components/CallToActionBlock/CallToActionBlock.svelte';
 import ServicesBlock from '../components/ServicesBlock/ServicesBlock.svelte';
-import LogoCloud from '../components/LogoCloud.svelte';
+import LogoCloud from '../components/LogoCloud/LogoCloud.svelte';
 import CallToActionPageHeader from '../components/PageHeaders/CallToActionPageHeader.svelte';
 import ImageOffsetPageHeader from '../components/PageHeaders/ImageOffsetPageHeader.svelte';
 import ProcessBlock from '../components/ProcessBlock/ProcessBlock.svelte';
 import AccordionBlock from '../components/AccordionBlock/AccordionBlock.svelte';
 import TestimonialsBlock from '../components/TestimonialsBlock/TestimonialsBlock.svelte';
-import StatsBlock from '../components/StatsBlock.svelte';
-import TwoColumnBlock from '../components/TwoColumnBlock.svelte';
-import FeaturedProjectBlock from '../components/FeaturedProjectBlock.svelte';
-import NewsletterSignup from '../components/NewsletterSignup.svelte';
+import StatsBlock from '../components/StatsBlock/StatsBlock.svelte';
+import TwoColumnBlock from '../components/TwoColumnBlock/TwoColumnBlock.svelte';
+import FeaturedProjectBlock from '../components/FeaturedProjectBlock/FeaturedProjectBlock.svelte';
+import NewsletterSignup from '../components/NewsletterSignup/NewsletterSignup.svelte';
 
 /**
  * Shared component map linking Umbraco ContentType aliases to Svelte components.

@@ -3,7 +3,7 @@
 	import type { components } from '$lib/types/umbraco';
 	import { PUBLIC_UMBRACO_API_URL } from '$env/static/public';
 	import BlogArticleCard from './BlogArticleCard.svelte';
-	import Button from '../Button.svelte';
+	import Button from '../Button/Button.svelte';
 
 	interface Props {
 		pageSize?: number | null;
@@ -61,22 +61,20 @@
 
 <div class="container mx-auto py-8 md:py-12">
 	{#if title || subTitle}
-		<div class="mb-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4">
-			<header>
-				{#if title}
-					<h2
-						class="font-display text-3xl font-semibold tracking-widest text-zinc-500 uppercase md:text-4xl dark:text-zinc-400"
-					>
-						{title}
-					</h2>
-				{/if}
-				{#if subTitle}
-					<p class="mt-1 text-lg leading-relaxed text-zinc-500 dark:text-zinc-400">
-						{subTitle}
-					</p>
-				{/if}
-			</header>
-		</div>
+		<header class="mb-8 lg:w-1/2">
+			{#if title}
+				<h2
+					class="font-display text-3xl font-semibold tracking-widest text-zinc-500 uppercase md:text-4xl dark:text-zinc-400"
+				>
+					{title}
+				</h2>
+			{/if}
+			{#if subTitle}
+				<p class="mt-1 text-lg leading-relaxed text-zinc-500 dark:text-zinc-400">
+					{subTitle}
+				</p>
+			{/if}
+		</header>
 	{/if}
 
 	<!-- Grid Layout for Posts -->

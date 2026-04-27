@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { components } from '$lib/types/umbraco';
-	import TextBlock from './TextBlock.svelte';
+	import TextBlock from './TextBlock/TextBlock.svelte';
 
 	interface Props {
 		item: components['schemas']['ApiBlockItemModel'];
