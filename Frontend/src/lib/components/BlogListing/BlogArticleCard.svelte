@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { components } from '$lib/types/umbraco';
+	import TagPill from '$lib/components/TagPill/TagPill.svelte';
 
 	interface Props {
 		post: components['schemas']['BlogArticleContentResponseModel'];
@@ -12,10 +13,10 @@
 	class="group relative flex h-full flex-col border-l-2 border-l-zinc-200 py-1 pl-6 transition-all duration-200 focus-within:border-l-red-500 hover:border-l-red-500 dark:border-l-zinc-800 dark:focus-within:border-l-red-500 dark:hover:border-l-red-500"
 >
 	<time
-		datetime={post.createDate}
+		datetime={post.properties?.publishDate ?? post.createDate}
 		class="mb-3 block text-xs font-medium tracking-wider text-zinc-400 uppercase dark:text-zinc-500"
 	>
-		{new Date(post.createDate).toLocaleDateString('en-GB', {
+		{new Date(post.properties?.publishDate ?? post.createDate).toLocaleDateString('en-GB', {
 			day: 'numeric',
 			month: 'short',
 			year: 'numeric'
@@ -38,6 +39,14 @@
 		<p class="mb-5 line-clamp-3 flex-1 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
 			{post.properties.metaDescription}
 		</p>
+	{/if}
+
+	{#if post.properties?.tags?.length}
+		<div class="mb-4 flex flex-wrap gap-1.5" aria-label="Tags">
+			{#each post.properties.tags as tag (tag.id)}
+				<TagPill {tag} />
+			{/each}
+		</div>
 	{/if}
 
 	<span

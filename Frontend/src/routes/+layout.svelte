@@ -31,4 +31,4 @@
 	{@render children()}
 </div>
 
-<Footer {...(data.footer ?? {})} />
+<Footer {...(data.footer ?? {})} socialLinks={data.socialMedia} />
