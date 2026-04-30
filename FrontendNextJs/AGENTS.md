@@ -5,6 +5,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Git
 - **Never commit directly to `main`.** All changes must go on a feature branch.
+- **Never push to or publish any branch on the remote.** Pushing is the user's responsibility.
 - Do not automate any git operations (commits, PRs, pushes, etc.) unless explicitly asked by the user.
 - If asked to commit, always ensure you are on a feature branch first. If the current branch is `main`, stop and ask the user which branch to use.
 <!-- END:nextjs-agent-rules -->

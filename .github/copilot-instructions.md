@@ -86,7 +86,8 @@ Tests are Storybook stories (co-located with components as `*.stories.ts`), not 
 
 ### Git
 - **Never commit directly to `main`.** All changes must go on a feature branch.
+- **Never push to or publish any branch on the remote.** Pushing is the user's responsibility.
 - Do not automate any git operations (commits, PRs, pushes, etc.) unless explicitly asked by the user.
 - If asked to commit, always ensure you are on a feature branch first. If the current branch is `main`, stop and ask the user which branch to use.
-- If asked to create a new branch, fetch `origin/main` first and base the new branch on it. Do not push it or create a PR unless explicitly asked.
-- Branch management and merging are the user's responsibility.
+- If asked to create a new branch, fetch `origin/main` first and base the new branch on it.
+- Branch management, pushing, and merging are the user's responsibility.
