@@ -1,0 +1,10 @@
+import{n as e}from"./chunk-BEldbCjX.js";import{a as t}from"./iframe-CaRgH72A.js";function n(e){return e.includes(`youtube.com/watch?v=`)?e.replace(`watch?v=`,`embed/`):e.includes(`youtu.be/`)?e.replace(`youtu.be/`,`youtube.com/embed/`):e}function r({url:e,title:t=`Video Player`}){return(0,i.jsx)(`div`,{className:`overflow-hidden rounded-2xl ring-1 ring-zinc-200 dark:ring-zinc-800`,children:(0,i.jsx)(`div`,{className:`relative aspect-video w-full bg-zinc-100 dark:bg-zinc-900`,children:(0,i.jsx)(`iframe`,{src:n(e),title:t,className:`absolute inset-0 h-full w-full border-0`,allow:`accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture`,allowFullScreen:!0})})})}var i,a=e((()=>{i=t(),r.__docgenInfo={description:``,methods:[],displayName:`VideoEmbed`,props:{url:{required:!0,tsType:{name:`string`},description:``},title:{required:!1,tsType:{name:`string`},description:``,defaultValue:{value:`'Video Player'`,computed:!1}}}}})),o,s,c;e((()=>{a(),o={title:`Blocks/VideoEmbed`,component:r,tags:[`autodocs`],parameters:{docs:{description:{component:"Embeds a video in a responsive 16:9 iframe. Props: `url` (required — the video URL) and `title` (accessible iframe title, defaults to `'Video Player'`). Automatically converts standard YouTube watch URLs (`youtube.com/watch?v=`) and short URLs (`youtu.be/`) to their embed equivalents; other URLs are passed through unchanged. The iframe is rendered inside a rounded container with a subtle ring border that adapts to dark mode."}}}},s={args:{url:`https://www.youtube.com/watch?v=dQw4w9WgXcQ`,title:`Rick Astley - Never Gonna Give You Up`},play:async()=>{await new Promise(e=>setTimeout(e,5e3))}},s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`{
+  args: {
+    url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    title: 'Rick Astley - Never Gonna Give You Up'
+  },
+  play: async () => {
+    // Wait for the iframe player to load and render before taking a snapshot
+    await new Promise(resolve => setTimeout(resolve, 5000));
+  }
+}`,...s.parameters?.docs?.source}}},c=[`YouTubeUrl`]}))();export{s as YouTubeUrl,c as __namedExportsOrder,o as default};

@@ -1,15 +1,15 @@
-# Umbraco & SvelteKit Blog
+# Umbraco Headless Blog
 
-A modern headless blog built with [Umbraco CMS](https://umbraco.com/) serving content via the Content Delivery API v2, and a [SvelteKit](https://kit.svelte.dev/) frontend consuming it.
+A modern headless blog built with [Umbraco CMS](https://umbraco.com/) serving content via the Content Delivery API v2, with two frontend implementations consuming it.
 
 ## Architecture
 
 | Layer | Technology | Role |
 |---|---|---|
 | Backend | Umbraco (.NET 10) | Headless CMS — content modelling, Delivery API, media |
-| Frontend | SvelteKit + TypeScript | SSR rendering, fetches all content server-side |
-| Styling | Tailwind CSS v4 | Utility-first CSS |
-| Testing | Storybook + Vitest | Isolated component development, visual regression |
+| Frontend (SvelteKit) | SvelteKit + TypeScript + Svelte 5 | SSR rendering, Storybook visual testing |
+| Frontend (Next.js) | Next.js 16 + TypeScript + App Router | SSR rendering, React Server Components |
+| Styling | Tailwind CSS v4 | Utility-first CSS, class-based dark mode |
 
 ### .NET Solution Structure
 
@@ -21,58 +21,63 @@ A modern headless blog built with [Umbraco CMS](https://umbraco.com/) serving co
 
 ## Features
 
-*   **Blocklist Editor:** Component-based page building in Umbraco (hero, headers, text blocks, image galleries, video/code embeds, and more).
-*   **Headless Content Delivery:** Umbraco Content Delivery API v2 with public access enabled.
-*   **End-to-end Type Safety:** `openapi-typescript` generates `src/lib/types/umbraco.d.ts` directly from the live Swagger definition.
-*   **uSync:** Serialises all Umbraco document type schema to source control. Imported automatically on first boot so the content structure is ready immediately.
-*   **Storybook Integration:** Every component has a co-located `.stories.ts` file. Stories tagged `snapshot` participate in automated visual regression testing.
+- **Block-based page building** — hero, text, image galleries, video/code embeds, services, stats, testimonials, process, accordion, CTA, logo clouds, and more
+- **Headless Content Delivery** — Umbraco Delivery API v2 with public access
+- **End-to-end type safety** — `openapi-typescript` generates types directly from the live Swagger definition
+- **uSync** — document type schema is serialised to source control and auto-imported on first boot
+- **Dual frontend** — the same Umbraco backend is consumed by both a SvelteKit and a Next.js frontend
+- **Visual regression testing** — Storybook stories with `storybook-addon-vis` (SvelteKit frontend)
 
 ## Prerequisites
 
-*   [.NET SDK 10+](https://dotnet.microsoft.com/download)
-*   [Node.js 20+](https://nodejs.org/)
+- [.NET SDK 10+](https://dotnet.microsoft.com/download)
+- [Node.js 20+](https://nodejs.org/)
 
-## Getting Started
+---
 
-### 1. Backend Setup (Umbraco)
+## 1. Backend Setup (Umbraco)
 
-The backend uses a **SQLite database** — no database installation or configuration required.
+The backend uses **SQLite** — no database installation needed.
 
 ```bash
 cd Application.Cms
 dotnet run
 ```
 
-*   **Umbraco Backoffice:** `https://localhost:44356/umbraco`
-*   **Swagger API Docs:** `https://localhost:44356/umbraco/swagger`
+| URL | Description |
+|---|---|
+| `https://localhost:44356/umbraco` | Backoffice |
+| `https://localhost:44356/umbraco/swagger` | Swagger / API explorer |
 
-#### Default Login Credentials
-
-On first run Umbraco performs an **unattended install** and seeds an admin account automatically:
+### Default credentials (unattended install)
 
 | Field | Value |
 |---|---|
 | Email | `admin@example.com` |
 | Password | `password12345` |
 
-uSync also imports all document type schema from source control on first boot, so the full content structure is ready without any manual backoffice steps.
+uSync imports all document type schema from source control on first boot — no manual backoffice setup required.
 
-### 2. Frontend Setup (SvelteKit)
+> **Tip:** If you see a migration error on startup, delete `Application.Cms/umbraco/Data/Umbraco.sqlite.db` (and its `-wal`/`-shm` siblings) and restart. Umbraco will recreate the database from scratch and re-import schema via uSync.
 
-#### Environment Configuration
+### Backend Commands
 
-Create a `.env` file in the `Frontend` directory:
+```bash
+cd Application.Cms
+dotnet run                          # Run the CMS
+dotnet build ../Application.slnx   # Build all projects
+```
+
+---
+
+## 2. Frontend — SvelteKit
+
+**[→ Full SvelteKit README](./Frontend/README.md)**
 
 ```bash
 # Frontend/.env
 PUBLIC_UMBRACO_API_URL="https://localhost:44356"
 ```
-
-This tells SvelteKit where to find the Umbraco Delivery API. The dev server automatically proxies `/media` requests to Umbraco via `vite.config.ts`.
-
-> **Note:** `hooks.server.ts` disables TLS certificate verification in development to handle the self-signed localhost certificate. Never carry this into production.
-
-#### Install and Run
 
 ```bash
 cd Frontend
@@ -80,59 +85,51 @@ npm install
 npm run dev   # http://localhost:5173
 ```
 
-Ensure the Umbraco backend is running before starting the frontend.
+---
 
-#### Frontend Scripts
+## 3. Frontend — Next.js
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start Vite dev server at `http://localhost:5173` |
-| `npm run build` | Build the SvelteKit app for production |
-| `npm run check` | Run `svelte-check` for type checking |
-| `npm run check:watch` | Run `svelte-check` in watch mode |
-| `npm run lint` | Check formatting with Prettier |
-| `npm run format` | Format code with Prettier |
-| `npm run generate-types` | Regenerate `src/lib/types/umbraco.d.ts` from the live Swagger endpoint (requires backend running) |
-| `npm run storybook` | Start Storybook dev server at `http://localhost:6006` |
-| `npm run build-storybook` | Build the Storybook static site |
-| `npm run test:storybook` | Run all Vitest/Playwright browser tests |
-| `npm run test:storybook:ui` | Run tests with the Vitest UI |
+**[→ Full Next.js README](./FrontendNextJs/README.md)**
 
-## Component Workflow
+```bash
+# FrontendNextJs/.env.local
+NEXT_PUBLIC_UMBRACO_API_URL="https://localhost:44356"
+```
 
-### Adding a New Content Block
+```bash
+cd FrontendNextJs
+npm install
+npm run dev   # http://localhost:3000
+```
 
-1. **Define in Umbraco:** Create the Document Type and Block in the Umbraco backoffice.
-2. **Commit schema:** uSync serialises the change automatically — commit the updated files under `uSync/`.
-3. **Generate Types:** Run `npm run generate-types` to update `src/lib/types/umbraco.d.ts`.
-4. **Build Component:** Create `Frontend/src/lib/components/MyBlock/MyBlock.svelte`.
-5. **Register Mapping:** Add the entry to `src/lib/utils/componentMap.ts` (maps camelCase content type alias → PascalCase Svelte component).
-6. **Add Stories:** Create a co-located `MyBlock.stories.ts` for Storybook and visual regression coverage.
+---
+
+## How Content Rendering Works
+
+Both frontends use the same two-level dispatch pattern:
+
+1. A catch-all route fetches the Umbraco content item by URL path
+2. The `contentType` of the response determines which **page layout** component renders (e.g. `homepage`, `blogArticle`)
+3. Layout components iterate the page's `pageContent` block list
+4. Each block's `contentType` is looked up in `componentMap` to find the right **block component**
+
+---
+
+## Adding a New Content Block
+
+1. Define the Document Type / block in the Umbraco backoffice
+2. Commit the uSync schema files under `uSync/`
+3. Run `npm run generate-types` in each frontend to update `umbraco.d.ts`
+4. Create the component in each frontend (`MyBlock.svelte` / `MyBlock.tsx`)
+5. Register it in each frontend's `componentMap`
+6. Add a Storybook story in the SvelteKit frontend (`MyBlock.stories.ts`)
 
 ### Naming Conventions
 
-*   Umbraco document type aliases are **camelCase** — e.g. `heroBlock`, `blogArticle`.
-*   Svelte component filenames are **PascalCase** — e.g. `HeroBlock.svelte`.
-*   The mapping lives in `componentMap.ts`.
+| Thing | Convention | Example |
+|---|---|---|
+| Umbraco content type alias | camelCase | `heroBlock` |
+| Component filename | PascalCase | `HeroBlock.svelte` / `HeroBlock.tsx` |
+| `componentMap` key | camelCase alias | `heroBlock` |
 
-### API Types
 
-`src/lib/types/umbraco.d.ts` is **auto-generated** — never edit it by hand. Regenerate it with `npm run generate-types` any time Umbraco document types change. The backend must be running when you do this.
-
-## Testing with Storybook
-
-Stories live alongside their components (e.g. `HeroBlock.stories.ts` next to `HeroBlock.svelte`).
-
-*   **Visual Regression:** Stories tagged `snapshot` use `storybook-addon-vis` for visual regression. Baselines are stored in `Frontend/__vis__/local/__baseline/`. Update baselines intentionally when a UI change is expected.
-*   **Accessibility:** `autodocs`-tagged stories are also used for accessibility auditing in the Storybook docs panel.
-
-```bash
-# Run all story tests
-npm run test:storybook
-
-# Run tests for a single component
-npx vitest --project=storybook run -t "HeroBlock"
-
-# Run tests for a specific story file
-npx vitest --project=storybook run src/lib/components/HeroBlock/HeroBlock.stories.ts
-```

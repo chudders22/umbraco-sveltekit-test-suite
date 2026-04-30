@@ -1,0 +1,77 @@
+import{n as e,o as t}from"./chunk-BEldbCjX.js";import{a as n,w as r}from"./iframe-CaRgH72A.js";import{n as i,t as a}from"./NavigationArea-BJF95TNp.js";function o(e){let[t,n]=(0,c.useState)(e.isOpen??!1);return(0,s.jsx)(`ul`,{children:(0,s.jsx)(a,{...e,isOpen:t,onToggle:n})})}var s,c,l,u,d,f;e((()=>{s=n(),c=t(r()),i(),l={title:`Components/Header/NavigationArea`,component:o,tags:[`autodocs`,`snapshot`],parameters:{docs:{description:{component:'A dropdown navigation group used inside the `Header`. Each area has a toggle button as its trigger and a flyout panel listing child `NavigationLink` items. Supports two title types: a plain `navigationTitle` (non-clickable label) and a `naviationTitleLink` (clickable link that also appends a "See all" link at the bottom of the dropdown). The toggle exposes `aria-expanded` and the dropdown closes on `Escape`. The component is wrapped in `NavigationAreaWrapper` to provide the controlled open/close state needed for stories.'}}}},u={parameters:{docs:{description:{story:"A navigation group whose title is a plain text label (`navigationTitle`) — it acts as a toggle only and does not navigate anywhere itself."}}},args:{item:{content:{id:`area-1`,contentType:`navigationArea`,properties:{title:{content:{contentType:`navigationTitle`,id:`t1`,properties:{title:`Our Services`}}},links:[{title:`Web Design`,url:`/services/design`,linkType:`Content`},{title:`SEO Optimization`,url:`/services/seo`,linkType:`Content`}]}}}}},d={parameters:{docs:{description:{story:'A navigation group whose title is a clickable link (`naviationTitleLink`) — the toggle navigates to the section overview page, and a "See all Products" link is appended at the bottom of the dropdown.'}}},args:{item:{content:{id:`area-2`,contentType:`navigationArea`,properties:{title:{content:{contentType:`naviationTitleLink`,id:`t2`,properties:{titleLink:[{title:`Products`,url:`/products`,linkType:`Content`}]}}},links:[{title:`Software`,url:`/products/software`,linkType:`Content`},{title:`Hardware`,url:`/products/hardware`,linkType:`Content`}]}}}}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
+  parameters: {
+    docs: {
+      description: {
+        story: 'A navigation group whose title is a plain text label (\`navigationTitle\`) — it acts as a toggle only and does not navigate anywhere itself.'
+      }
+    }
+  },
+  args: {
+    item: {
+      content: {
+        id: 'area-1',
+        contentType: 'navigationArea',
+        properties: {
+          title: {
+            content: {
+              contentType: 'navigationTitle',
+              id: 't1',
+              properties: {
+                title: 'Our Services'
+              }
+            }
+          },
+          links: [{
+            title: 'Web Design',
+            url: '/services/design',
+            linkType: 'Content'
+          }, {
+            title: 'SEO Optimization',
+            url: '/services/seo',
+            linkType: 'Content'
+          }]
+        }
+      }
+    }
+  }
+}`,...u.parameters?.docs?.source}}},d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
+  parameters: {
+    docs: {
+      description: {
+        story: 'A navigation group whose title is a clickable link (\`naviationTitleLink\`) — the toggle navigates to the section overview page, and a "See all Products" link is appended at the bottom of the dropdown.'
+      }
+    }
+  },
+  args: {
+    item: {
+      content: {
+        id: 'area-2',
+        contentType: 'navigationArea',
+        properties: {
+          title: {
+            content: {
+              contentType: 'naviationTitleLink',
+              id: 't2',
+              properties: {
+                titleLink: [{
+                  title: 'Products',
+                  url: '/products',
+                  linkType: 'Content'
+                }]
+              }
+            }
+          },
+          links: [{
+            title: 'Software',
+            url: '/products/software',
+            linkType: 'Content'
+          }, {
+            title: 'Hardware',
+            url: '/products/hardware',
+            linkType: 'Content'
+          }]
+        }
+      }
+    }
+  }
+}`,...d.parameters?.docs?.source}}},f=[`VisualTitleGroup`,`ClickableTitleGroup`]}))();export{d as ClickableTitleGroup,u as VisualTitleGroup,f as __namedExportsOrder,l as default};

@@ -1,0 +1,18 @@
+import{n as e}from"./chunk-BEldbCjX.js";import{a as t}from"./iframe-CaRgH72A.js";import{n,t as r}from"./ServiceCard-TQdmeutU.js";function i({services:e,title:t,subTitle:n}){let i=e?.items||[];return(0,a.jsxs)(`section`,{className:`container mx-auto py-8 md:py-12`,children:[(t||n)&&(0,a.jsxs)(`header`,{className:`mb-8 lg:w-1/2`,children:[t&&(0,a.jsx)(`h2`,{className:`font-display text-3xl font-semibold tracking-widest text-zinc-500 uppercase md:text-4xl dark:text-zinc-400`,children:t}),n&&(0,a.jsx)(`p`,{className:`mt-1 text-lg leading-relaxed text-zinc-500 dark:text-zinc-400`,children:n})]}),i.length>0?(0,a.jsx)(`div`,{className:`grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-4`,children:i.map((e,t)=>{let n=e.content.properties;return(0,a.jsx)(r,{...n},t)})}):(0,a.jsx)(`div`,{className:`rounded-xl border border-dashed border-zinc-200 bg-zinc-50 p-12 text-center dark:border-zinc-800 dark:bg-zinc-900/30`,children:(0,a.jsx)(`p`,{className:`text-sm text-zinc-500 dark:text-zinc-400`,children:`No services have been added yet.`})})]})}var a,o=e((()=>{a=t(),n(),i.__docgenInfo={description:``,methods:[],displayName:`ServicesBlock`}})),s,c,l,u,d;e((()=>{o(),s={items:[{content:{contentType:`serviceBlockItem`,properties:{title:`Executive Search`,description:`Specialist support to appoint transformational senior leaders.`,image:[{id:`10`,name:`Executive Search`,mediaType:`Image`,url:`https://placehold.co/900x540/0f172a/ffffff?text=Executive+Search`,properties:{}}],link:[{title:`Read more`,url:`/services/executive-search`,target:`_self`,linkType:`External`}]}}},{content:{contentType:`serviceBlockItem`,properties:{title:`Leadership Advisory`,description:`Guidance on succession, organisational design, and leadership performance.`,link:[{title:`Our approach`,url:`/services/leadership-advisory`,target:`_self`,linkType:`External`}]}}},{content:{contentType:`serviceBlockItem`,properties:{title:`Interim Leadership`,description:`Experienced interim executives for urgent or business-critical periods.`,image:[{id:`11`,name:`Interim Leadership`,mediaType:`Image`,url:`https://placehold.co/900x540/1e293b/ffffff?text=Interim+Leadership`,properties:{}}]}}}]},c={title:`Blocks/ServicesBlock`,component:i,tags:[`autodocs`],parameters:{docs:{description:{component:"A showcase grid of service cards. Corresponds to the `servicesBlock` Umbraco content type. Renders a 1→2→4 column responsive grid of `ServiceCard` components. Props: `title` (optional section heading), `subTitle` (optional intro text), and `services` (a BlockList of `serviceBlockItem` blocks). Each service item is spread as props directly into `ServiceCard`. Shows a dashed empty-state placeholder when no services are present. Supports dark mode."}}}},l={args:{services:s}},u={parameters:{docs:{description:{story:`Shows the empty-state placeholder rendered when no service items have been added in the Umbraco backoffice.`}}},args:{services:{items:[]}}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`{
+  args: {
+    services: mockServices
+  }
+}`,...l.parameters?.docs?.source}}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`{
+  parameters: {
+    docs: {
+      description: {
+        story: 'Shows the empty-state placeholder rendered when no service items have been added in the Umbraco backoffice.'
+      }
+    }
+  },
+  args: {
+    services: {
+      items: []
+    }
+  }
+}`,...u.parameters?.docs?.source}}},d=[`Default`,`Empty`]}))();export{l as Default,u as Empty,d as __namedExportsOrder,c as default};

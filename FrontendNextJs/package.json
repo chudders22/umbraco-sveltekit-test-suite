@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "generate-types": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 openapi-typescript https://localhost:44356/umbraco/swagger/delivery/swagger.json -o ./src/lib/types/umbraco.d.ts"
+    "generate-types": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 openapi-typescript https://localhost:44356/umbraco/swagger/delivery/swagger.json -o ./src/lib/types/umbraco.d.ts",
+    "storybook": "storybook dev -p 6007",
+    "build-storybook": "storybook build",
+    "test:storybook": "vitest --project=storybook",
+    "test:storybook:ui": "vitest --project=storybook --ui"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
@@ -17,14 +21,24 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^10.3.6",
+    "@storybook/addon-docs": "^10.3.6",
+    "@storybook/addon-vitest": "^10.3.6",
+    "@storybook/nextjs-vite": "^10.3.6",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/browser-playwright": "^4.1.5",
+    "@vitest/ui": "^4.1.5",
     "cross-env": "^7.0.3",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
+    "playwright": "^1.59.1",
+    "storybook": "^10.3.6",
+    "storybook-addon-vis": "^3.1.5",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.5"
   }
 }

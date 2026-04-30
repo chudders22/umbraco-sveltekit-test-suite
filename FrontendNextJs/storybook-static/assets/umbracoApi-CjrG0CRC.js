@@ -1,0 +1,1 @@
+import{n as e}from"./chunk-BEldbCjX.js";function t(e){if(!e)return``;try{let{pathname:t,search:n}=new URL(e);return t+n}catch{return e}}var n=e((()=>{}));export{t as n,n as t};
