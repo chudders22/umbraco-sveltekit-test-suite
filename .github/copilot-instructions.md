@@ -83,3 +83,7 @@ Tests are Storybook stories (co-located with components as `*.stories.ts`), not 
 - Backend uses SQLite (`Umbraco.sqlite.db`, auto-created) and runs unattended install on first boot (`admin@example.com` / `password12345`).
 - `hooks.server.ts` disables TLS verification in dev to handle the self-signed localhost cert. Vite proxies `/media` to Umbraco via `vite.config.ts`.
 - uSync imports schema from source on first boot (`ImportOnFirstBoot: true`) — schema changes are tracked in source control.
+
+### Git
+- Do not automate any git operations (commits, PRs, etc.) in code or scripts.
+- If asked you can create a new branch, but you must fetch the remote main first and base the new branch on it. Do not push it or create a PR. Branch management is manual.

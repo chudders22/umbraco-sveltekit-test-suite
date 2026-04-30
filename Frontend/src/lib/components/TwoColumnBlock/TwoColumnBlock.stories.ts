@@ -4,7 +4,14 @@ import TwoColumnBlock from './TwoColumnBlock.svelte';
 const meta = {
 	title: 'Blocks/TwoColumnBlock',
 	component: TwoColumnBlock,
-	tags: ['autodocs', 'snapshot']
+	tags: ['autodocs', 'snapshot'],
+	parameters: {
+		docs: {
+			description: {
+				component: `A two-column layout with rich text content on one side and an image on the other. Corresponds to the \`twoColumnBlock\` Umbraco content type. Props: \`heading\`, \`subTitle\`, \`content\` (rich text with \`markup\` string), \`image\` (first item used), \`imagePosition\` (boolean — \`true\` places the image on the left, \`false\`/absent places it on the right), and \`link\` (optional CTA rendered as a primary arrow ButtonLink). When no image is provided a grey placeholder maintains the grid layout. Shows a dashed empty-state when all content props are absent. Supports dark mode.`
+			}
+		}
+	}
 } satisfies Meta<any>;
 
 export default meta;
@@ -45,6 +52,13 @@ export const ImageRight: Story = {
 };
 
 export const ImageLeft: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Sets `imagePosition` to `\'left\'` (truthy) — the image column is ordered first and the text column is ordered last, placing the image on the left at desktop widths.'
+			}
+		}
+	},
 	args: {
 		heading: 'Strategy-led, execution-focused',
 		subTitle: 'We start with the why before touching a line of code.',
@@ -66,6 +80,13 @@ export const WithLink: Story = {
 };
 
 export const NoImage: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Shows the block when no image is provided — a grey placeholder fills the image column to maintain the two-column grid structure.'
+			}
+		}
+	},
 	args: {
 		heading: 'Trusted by ambitious teams worldwide',
 		subTitle: 'From seed-stage startups to enterprise organisations.',

@@ -6,7 +6,12 @@ const meta = {
 	component: Header,
 	tags: ['autodocs', 'snapshot'],
 	parameters: {
-		layout: 'fullscreen'
+		layout: 'fullscreen',
+		docs: {
+			description: {
+				component: `The sticky global site header with a frosted-glass background. Accepts \`siteName\`, an optional \`logo\` image array, and a \`links\` BlockList of navigation items. Supports two navigation item types: \`navigationArea\` (a dropdown group with an optional title and child links) and \`naviationTitleLink\` (a standalone clickable top-level link). Each \`navigationArea\` can have either a plain text title (\`navigationTitle\`) or a clickable title (\`naviationTitleLink\`) that renders a "See all" link at the bottom of its dropdown. Includes a \`ThemeToggle\` button and a mobile menu button (mobile drawer not yet implemented). Uses fullscreen layout in Storybook.`
+			}
+		}
 	}
 };
 
@@ -95,6 +100,13 @@ export const Default: Story = {
 };
 
 export const NoLogo: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Shows the header when no `logo` image is provided — only the site name text is used for branding.'
+			}
+		}
+	},
 	args: {
 		siteName: 'Brand Name Only',
 		links: mockLinks
@@ -102,6 +114,13 @@ export const NoLogo: Story = {
 };
 
 export const NoLinks: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Shows the header with no navigation links — the nav area and mobile menu button are hidden entirely, leaving only the logo/site name.'
+			}
+		}
+	},
 	args: {
 		siteName: 'Under Construction',
 		logo: [mockLogo]

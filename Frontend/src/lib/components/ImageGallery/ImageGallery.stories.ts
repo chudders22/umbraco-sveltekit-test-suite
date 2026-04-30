@@ -4,7 +4,14 @@ import ImageGallery from './ImageGallery.svelte';
 const meta = {
 	title: 'Blocks/ImageGallery',
 	component: ImageGallery,
-	tags: ['autodocs']
+	tags: ['autodocs'],
+	parameters: {
+		docs: {
+			description: {
+				component: `A responsive image grid. Accepts an \`images\` array of Umbraco \`IApiMediaWithCropsModel\` objects. Images are arranged in a 1→2→3 column CSS grid (responsive breakpoints) with aspect-video cells, rounded corners, and a subtle zoom-on-hover effect. The component currently renders images in a static grid — a lightbox interaction is not yet implemented. Suitable for blog post galleries and portfolio image sets.`
+			}
+		}
+	}
 } satisfies Meta<any>;
 
 export default meta;

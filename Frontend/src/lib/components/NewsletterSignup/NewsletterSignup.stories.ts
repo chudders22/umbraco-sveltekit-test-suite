@@ -4,7 +4,14 @@ import NewsletterSignup from './NewsletterSignup.svelte';
 const meta = {
 	title: 'Blocks/NewsletterSignup',
 	component: NewsletterSignup,
-	tags: ['autodocs', 'snapshot']
+	tags: ['autodocs', 'snapshot'],
+	parameters: {
+		docs: {
+			description: {
+				component: `An email capture section with a heading, optional description, email input, and submit button. Props: \`heading\`, \`description\` (optional), \`buttonLabel\` (defaults to \`'Subscribe'\`), \`placeholderText\` (defaults to \`'you@example.com'\`). Manages its own submission state (\`idle\` → \`loading\` → \`success\` / \`error\`) and shows a success confirmation message after submission. Features a decorative dot-grid texture matching the \`CallToActionBlock\`. The submit endpoint should be wired up to your newsletter provider (e.g. Mailchimp, ConvertKit). All fields except \`heading\` are optional.`
+			}
+		}
+	}
 } satisfies Meta<any>;
 
 export default meta;
@@ -21,6 +28,13 @@ export const Default: Story = {
 };
 
 export const MinimalCopy: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Shows the minimal state — only `heading` and `buttonLabel` provided, with no description text and the default placeholder. Demonstrates that the description is optional.'
+			}
+		}
+	},
 	args: {
 		heading: 'Subscribe to our newsletter',
 		buttonLabel: 'Subscribe'
@@ -37,6 +51,13 @@ export const CustomCTA: Story = {
 };
 
 export const HeadingOnly: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'The absolute minimum — only a heading is provided. The form still renders with default placeholder text and button label.'
+			}
+		}
+	},
 	args: {
 		heading: "Let's keep in touch"
 	}

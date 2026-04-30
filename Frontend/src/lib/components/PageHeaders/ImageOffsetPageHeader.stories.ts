@@ -4,7 +4,14 @@ import ImageOffsetPageHeader from './ImageOffsetPageHeader.svelte';
 const meta = {
 	title: 'PageHeaders/ImageOffsetPageHeader',
 	component: ImageOffsetPageHeader as any,
-	tags: ['autodocs']
+	tags: ['autodocs'],
+	parameters: {
+		docs: {
+			description: {
+				component: `A compact inner-page header (35vh minimum) with an optional background image, auto-generated breadcrumb navigation, and a page title. Corresponds to the \`imageOffsetPageHeader\` Umbraco content type. Props: \`image\` (first item used as background), \`title\` (overrides the auto-derived label), and \`route\` (URL path string used to build breadcrumbs — segments are capitalised and slugs are humanised). When no \`title\` is provided, the last segment of \`route\` is used as the page label. Supports dark mode.`
+			}
+		}
+	}
 } satisfies Meta<any>;
 
 export default meta;
@@ -25,6 +32,13 @@ export const Default: Story = {
 };
 
 export const NoImage: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Shows the header without a background image — the section uses the default zinc background colour, demonstrating that the image is entirely optional.'
+			}
+		}
+	},
 	args: {
 		image: null
 	}
