@@ -60,7 +60,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {
-		pageSize: 2
+		pageSize: 2,
+		initialBlogPosts: mockPosts
 	}
 };
 

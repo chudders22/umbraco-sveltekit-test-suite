@@ -17,41 +17,54 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-import type { components } from '$lib/types/umbraco';
+const makeImage = (id: string, color: string, label: string) =>
+	({
+		id,
+		url: `https://placehold.co/600x400/${color}/ffffff`,
+		name: label,
+		mediaType: 'Image',
+		properties: {},
+		createDate: '',
+		updateDate: '',
+		path: ''
+	}) as any;
 
-export const Default: Story = {
+export const SingleImage: Story = {
 	args: {
+		enableLightbox: true,
 		images: [
 			{
 				id: '1',
-				url: 'https://placehold.co/600x400',
-				name: 'Placeholder 1',
-				mediaType: 'Image',
-				properties: {},
-				createDate: '',
-				updateDate: '',
-				path: ''
-			} as any,
-			{
-				id: '2',
-				url: 'https://placehold.co/600x400/orange/white',
-				name: 'Placeholder 2',
-				mediaType: 'Image',
-				properties: {},
-				createDate: '',
-				updateDate: '',
-				path: ''
-			} as any,
-			{
-				id: '3',
-				url: 'https://placehold.co/600x400/blue/white',
-				name: 'Placeholder 3',
+				url: 'https://placehold.co/1200x675',
+				name: 'Full-width feature image',
 				mediaType: 'Image',
 				properties: {},
 				createDate: '',
 				updateDate: '',
 				path: ''
 			} as any
+		]
+	}
+};
+
+export const Default: Story = {
+	args: {
+		enableLightbox: true,
+		images: [
+			makeImage('1', '374151', 'Placeholder 1'),
+			makeImage('2', 'ea580c', 'Placeholder 2'),
+			makeImage('3', '1d4ed8', 'Placeholder 3')
+		]
+	}
+};
+
+export const LightboxDisabled: Story = {
+	args: {
+		enableLightbox: false,
+		images: [
+			makeImage('1', '374151', 'Placeholder 1'),
+			makeImage('2', 'ea580c', 'Placeholder 2'),
+			makeImage('3', '1d4ed8', 'Placeholder 3')
 		]
 	}
 };

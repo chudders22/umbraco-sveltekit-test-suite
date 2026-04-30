@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ButtonLink from '../ButtonLink/ButtonLink.svelte';
+	import ProgressiveImage from '$lib/components/ProgressiveImage/ProgressiveImage.svelte';
 
 	interface Props {
 		heading?: string | null;
@@ -75,11 +76,7 @@
 				<div class={imageFirst ? 'order-first' : ''}>
 					<div class="relative aspect-[4/3] overflow-hidden rounded-2xl">
 						{#if hasImage}
-							<img
-								src={img!.url}
-								alt={img!.name}
-								class="h-full w-full object-cover"
-							/>
+							<ProgressiveImage src={img!.url} alt={img!.name} />
 						{:else}
 							<div
 								class="h-full w-full bg-zinc-100 dark:bg-zinc-800"

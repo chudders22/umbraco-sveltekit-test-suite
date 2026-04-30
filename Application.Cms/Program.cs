@@ -1,12 +1,16 @@
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+string[] allowedOrigins = builder.Configuration
+    .GetSection("Cors:AllowedOrigins")
+    .Get<string[]>() ?? [];
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.WithOrigins(allowedOrigins)
               .AllowAnyHeader()
-              .AllowAnyMethod();
+              .WithMethods("GET", "HEAD");
     });
 });
 builder.CreateUmbracoBuilder()

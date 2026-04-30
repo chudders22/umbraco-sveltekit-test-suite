@@ -18,6 +18,24 @@
 	let { title, subTitle, items: itemsProp, openFirst = false }: Props = $props();
 
 	let items = $derived(itemsProp?.items ?? []);
+	let detailElements: HTMLDetailsElement[] = [];
+
+	function handleKeydown(event: KeyboardEvent, index: number) {
+		const summaries = detailElements.map((el) => el.querySelector('summary') as HTMLElement);
+		if (event.key === 'ArrowDown') {
+			event.preventDefault();
+			summaries[(index + 1) % summaries.length]?.focus();
+		} else if (event.key === 'ArrowUp') {
+			event.preventDefault();
+			summaries[(index - 1 + summaries.length) % summaries.length]?.focus();
+		} else if (event.key === 'Home') {
+			event.preventDefault();
+			summaries[0]?.focus();
+		} else if (event.key === 'End') {
+			event.preventDefault();
+			summaries[summaries.length - 1]?.focus();
+		}
+	}
 </script>
 
 <section class="border-y border-zinc-100 bg-white py-8 md:py-12 dark:border-zinc-800 dark:bg-zinc-950">
@@ -46,12 +64,14 @@
 						Border and text colour react to the open state via CSS alone — no JS state needed.
 					-->
 					<details
+						bind:this={detailElements[index]}
 						class="group border-l-2 border-l-zinc-200 pl-6 transition-colors duration-200
 							open:border-l-red-500
 							dark:border-l-zinc-800 dark:open:border-l-red-500"
 						open={openFirst && index === 0}
 					>
 						<summary
+							onkeydown={(e) => handleKeydown(e, index)}
 							class="flex cursor-pointer list-none items-center justify-between gap-4 py-1
 								[&::-webkit-details-marker]:hidden
 								focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset

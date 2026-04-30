@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { components } from '$lib/types/umbraco';
 	import ButtonLink from '../ButtonLink/ButtonLink.svelte';
+	import ProgressiveImage from '$lib/components/ProgressiveImage/ProgressiveImage.svelte';
 
 	let { heading, text, actions, image }: components['schemas']['CallToActionBlockPropertiesModel'] =
 		$props();
@@ -63,14 +64,15 @@
 		<!-- Image Side -->
 		{#if imageUrl}
 			<div class="relative flex-1 self-stretch">
-				<img
+				<ProgressiveImage
 					src={imageUrl}
 					alt={imageAlt}
-					class="h-full min-h-[300px] w-full object-cover"
-					loading="lazy"
+					class="h-full min-h-[300px] w-full"
 				/>
+				<!-- Gradient overlays the ProgressiveImage wrapper (absolute relative to this parent) -->
 				<div
-					class="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent dark:from-zinc-950 dark:via-zinc-950/70"
+					class="pointer-events-none absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent dark:from-zinc-950 dark:via-zinc-950/70"
+					aria-hidden="true"
 				></div>
 			</div>
 		{/if}
