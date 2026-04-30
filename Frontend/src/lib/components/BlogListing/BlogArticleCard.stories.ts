@@ -8,7 +8,14 @@ type Props = ComponentProps<typeof BlogArticleCard>;
 const meta = {
 	title: 'Blocks/BlogListing/BlogArticleCard',
 	component: BlogArticleCard as any,
-	tags: ['autodocs']
+	tags: ['autodocs'],
+	parameters: {
+		docs: {
+			description: {
+				component: `An individual blog post card used within the \`BlogListing\` grid. Displays the post's creation date, title (as a full-card clickable link), a line-clamped excerpt from \`metaDescription\`, and an animated "Read article" CTA. Accepts a full \`BlogArticleContentResponseModel\` as its \`post\` prop. Supports dark mode. The open-graph image is not displayed on this card — only text metadata is shown.`
+			}
+		}
+	}
 } satisfies Meta<any>;
 
 export default meta;
@@ -33,6 +40,13 @@ export const Default: Story = {
 };
 
 export const NoImage: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Shows the card when `openGraphImage` is null — the card layout is unaffected since the image is not rendered on the card itself.'
+			}
+		}
+	},
 	args: {
 		post: {
 			...mockPost,

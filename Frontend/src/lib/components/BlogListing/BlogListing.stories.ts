@@ -46,6 +46,11 @@ const meta = {
 					}
 				}
 			}
+		},
+		docs: {
+			description: {
+				component: `A paginated blog post listing that renders a grid of \`BlogArticleCard\` components. Initial posts are seeded from the SvelteKit \`$page.data.initialBlogPosts\` store (populated by \`+page.server.ts\`); subsequent pages are fetched client-side from the Umbraco Delivery API. The \`pageSize\` prop controls how many posts are loaded per request. A "Load older articles" button appears while more posts are available, and an empty-state message is shown when no posts exist. In Storybook the \`$page\` store is mocked via \`sveltekit_experimental\`.`
+			}
 		}
 	}
 } satisfies Meta<any>;
@@ -64,6 +69,11 @@ export const EmptyState: Story = {
 		pageSize: 3
 	},
 	parameters: {
+		docs: {
+			description: {
+				story: 'Demonstrates the empty-state message rendered when the `$page` store returns no blog posts — e.g. when no articles have been published yet.'
+			}
+		},
 		sveltekit_experimental: {
 			stores: {
 				page: {

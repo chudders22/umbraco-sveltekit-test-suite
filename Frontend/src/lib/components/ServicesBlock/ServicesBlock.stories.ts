@@ -71,7 +71,14 @@ const mockServices = {
 const meta = {
 	title: 'Blocks/ServicesBlock',
 	component: ServicesBlock,
-	tags: ['autodocs']
+	tags: ['autodocs'],
+	parameters: {
+		docs: {
+			description: {
+				component: `A showcase grid of service cards. Corresponds to the \`servicesBlock\` Umbraco content type. Renders a 1→2→4 column responsive grid of \`ServiceCard\` components. Props: \`title\` (optional section heading), \`subTitle\` (optional intro text), and \`services\` (a BlockList of \`serviceBlockItem\` blocks). Each service item is spread as props directly into \`ServiceCard\`. Shows a dashed empty-state placeholder when no services are present. Supports dark mode.`
+			}
+		}
+	}
 } satisfies Meta<any>;
 
 export default meta;
@@ -84,6 +91,13 @@ export const Default: Story = {
 };
 
 export const Empty: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Shows the empty-state placeholder rendered when no service items have been added in the Umbraco backoffice.'
+			}
+		}
+	},
 	args: {
 		services: {
 			items: []

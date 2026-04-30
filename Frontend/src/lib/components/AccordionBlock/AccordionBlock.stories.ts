@@ -59,7 +59,14 @@ const singleItem = {
 const meta = {
 	title: 'Blocks/AccordionBlock',
 	component: AccordionBlock,
-	tags: ['autodocs', 'snapshot']
+	tags: ['autodocs', 'snapshot'],
+	parameters: {
+		docs: {
+			description: {
+				component: `An expandable FAQ-style accordion section. Uses native \`<details>\`/\`<summary>\` elements for CSS-only expand/collapse — no JavaScript state required. Corresponds to the \`accordionBlock\` Umbraco content type. Props: \`title\` (optional section heading), \`subTitle\` (optional intro text), \`items\` (BlockList of \`accordionItem\` blocks with \`question\` and \`answer\` rich text), and \`openFirst\` (boolean, opens the first item on load). Renders a dashed empty-state placeholder when \`items\` is empty. Supports dark mode.`
+			}
+		}
+	}
 } satisfies Meta<any>;
 
 export default meta;
@@ -80,6 +87,13 @@ export const WithTitle: Story = {
 };
 
 export const SingleItem: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Demonstrates the `openFirst` prop — the first accordion item is pre-expanded on load without any JavaScript interaction.'
+			}
+		}
+	},
 	args: {
 		items: singleItem,
 		openFirst: true
@@ -87,6 +101,13 @@ export const SingleItem: Story = {
 };
 
 export const Empty: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Shows the empty-state placeholder rendered when no accordion items have been added in the Umbraco backoffice.'
+			}
+		}
+	},
 	args: {
 		title: 'Frequently Asked Questions',
 		items: { items: [] }

@@ -4,7 +4,14 @@ import ServiceCard from './ServiceCard.svelte';
 const meta = {
 	title: 'Blocks/ServicesBlock/ServiceCard',
 	component: ServiceCard,
-	tags: ['autodocs']
+	tags: ['autodocs'],
+	parameters: {
+		docs: {
+			description: {
+				component: `An individual service card used within the \`ServicesBlock\` grid. Renders a left-border accent card with a \`title\`, optional \`description\`, and an optional \`link\`. When a link is present, the entire card is made clickable via a full-inset invisible anchor (with a visible "Learn more" arrow CTA). The left border and title colour transition to brand red on hover/focus. \`image\` is accepted from Umbraco's \`ServiceBlockItemPropertiesModel\` schema but is not currently rendered by this card. Supports dark mode.`
+			}
+		}
+	}
 } satisfies Meta<any>;
 
 export default meta;
@@ -36,6 +43,13 @@ export const Default: Story = {
 };
 
 export const NoImage: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Card without an image — since `ServiceCard` does not render an image, this is visually identical to the default. Confirms that the image prop being absent has no effect on rendering.'
+			}
+		}
+	},
 	args: {
 		title: 'Leadership Advisory',
 		description:
@@ -52,6 +66,13 @@ export const NoImage: Story = {
 };
 
 export const NoLink: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Card without a `link` prop — the card is not clickable, the full-inset anchor and "Learn more" arrow are omitted, and the hover state has no effect.'
+			}
+		}
+	},
 	args: {
 		title: 'Interim Leadership',
 		description: 'Rapid access to experienced interim leaders for high-priority transitions.',

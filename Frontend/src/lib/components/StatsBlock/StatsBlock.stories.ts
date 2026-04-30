@@ -4,7 +4,14 @@ import StatsBlock from './StatsBlock.svelte';
 const meta = {
 	title: 'Blocks/StatsBlock',
 	component: StatsBlock,
-	tags: ['autodocs', 'snapshot']
+	tags: ['autodocs', 'snapshot'],
+	parameters: {
+		docs: {
+			description: {
+				component: `A grid of key statistics. Corresponds to the \`statsBlock\` Umbraco content type. Renders a 2→4 column grid where each stat shows a \`value\`, \`label\`, and optional \`description\`. Symbol characters (%, +, .) within \`value\` are automatically wrapped in brand-red \`<span>\` elements at a smaller size to visually accent them. Props: \`title\` (optional section heading) and \`stats\` (a BlockList of \`statItem\` blocks). Shows a dashed empty-state placeholder when no stats are present. Supports dark mode.`
+			}
+		}
+	}
 } satisfies Meta<any>;
 
 export default meta;
@@ -31,6 +38,13 @@ export const Default: Story = {
 };
 
 export const WithTitle: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Shows the optional `title` section heading above the stats grid — useful when the block needs a label to contextualise the numbers.'
+			}
+		}
+	},
 	args: {
 		title: 'By the Numbers',
 		stats: { items: fourStats }
@@ -49,6 +63,13 @@ export const TwoStats: Story = {
 };
 
 export const Empty: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Shows the empty-state placeholder rendered when no stat items have been added in the Umbraco backoffice.'
+			}
+		}
+	},
 	args: {
 		stats: { items: [] }
 	}

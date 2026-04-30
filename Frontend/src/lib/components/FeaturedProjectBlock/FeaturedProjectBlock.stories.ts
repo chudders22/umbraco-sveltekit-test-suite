@@ -4,7 +4,14 @@ import FeaturedProjectBlock from './FeaturedProjectBlock.svelte';
 const meta = {
 	title: 'Blocks/FeaturedProjectBlock',
 	component: FeaturedProjectBlock,
-	tags: ['autodocs', 'snapshot']
+	tags: ['autodocs', 'snapshot'],
+	parameters: {
+		docs: {
+			description: {
+				component: `A showcase section for a single featured case study or project. Corresponds to the \`featuredProjectBlock\` Umbraco content type. Renders a 5-column asymmetric grid: a 3/5-wide image panel (aspect-video, with a gradient overlay) and a 2/5-wide content panel containing an optional \`sectionLabel\`, \`client\` attribution, \`projectTitle\`, \`description\`, a \`tags\` array rendered as pill badges, and an optional CTA \`link\`. When no image is supplied a grey placeholder fills the image slot. All fields except the grid layout are optional.`
+			}
+		}
+	}
 } satisfies Meta<any>;
 
 export default meta;
@@ -41,6 +48,13 @@ export const Default: Story = {
 };
 
 export const NoImage: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Shows the block when no image is provided — a grey placeholder fills the image slot, so the layout remains intact.'
+			}
+		}
+	},
 	args: {
 		sectionLabel: 'Featured work',
 		projectTitle: 'Luminary SaaS Dashboard',
@@ -61,6 +75,13 @@ export const NoImage: Story = {
 };
 
 export const MinimalContent: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Minimal variant with only `projectTitle`, `description`, and `image` — demonstrates that `sectionLabel`, `client`, `tags`, and `link` are all optional.'
+			}
+		}
+	},
 	args: {
 		projectTitle: 'Fieldnotes Mobile App',
 		description:
