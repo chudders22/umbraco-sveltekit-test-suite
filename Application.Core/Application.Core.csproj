@@ -4,6 +4,10 @@
     <ProjectReference Include="..\Application.Models\Application.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Umbraco.Cms.Core" Version="17.3.4" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>

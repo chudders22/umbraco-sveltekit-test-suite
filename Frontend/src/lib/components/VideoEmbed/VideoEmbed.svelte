@@ -19,7 +19,7 @@
 	<div class="relative aspect-video w-full bg-zinc-100 dark:bg-zinc-900">
 		<iframe
 			src={embedUrl}
-			{title}
+			title={title || 'Video Player'}
 			class="absolute inset-0 h-full w-full border-0"
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 			allowfullscreen

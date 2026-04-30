@@ -207,6 +207,7 @@ export interface components {
             readonly destinationType?: string | null;
             readonly route?: components["schemas"]["ApiContentRouteModel"] | null;
             linkType: components["schemas"]["LinkTypeModel"];
+            readonly culture?: string | null;
         };
         BlockDisplaySettingsElementModel: {
             properties?: components["schemas"]["BlockDisplaySettingsPropertiesModel"];
@@ -238,7 +239,11 @@ export interface components {
              */
             contentType: "blogArticle";
         };
-        BlogArticlePropertiesModel: components["schemas"]["CompositionPageHeaderPropertiesModel"] & components["schemas"]["CompositionPageMetadataPropertiesModel"] & components["schemas"]["CompositionStandardContentPropertiesModel"];
+        BlogArticlePropertiesModel: {
+            tags?: components["schemas"]["IApiContentModel"][] | null;
+            /** Format: date-time */
+            publishDate?: string | null;
+        } & (components["schemas"]["CompositionPageHeaderPropertiesModel"] & components["schemas"]["CompositionPageMetadataPropertiesModel"] & components["schemas"]["CompositionStandardContentPropertiesModel"]);
         BlogContentModel: {
             properties?: components["schemas"]["BlogPropertiesModel"];
         } & (Omit<components["schemas"]["IApiContentModelBase"], "contentType"> & {
@@ -271,6 +276,23 @@ export interface components {
             pageSize?: number | null;
         };
         BlogPropertiesModel: components["schemas"]["CompositionPageHeaderPropertiesModel"] & components["schemas"]["CompositionPageMetadataPropertiesModel"] & components["schemas"]["CompositionStandardContentPropertiesModel"];
+        BlogTagsContentModel: {
+            properties?: components["schemas"]["BlogTagsPropertiesModel"];
+        } & (Omit<components["schemas"]["IApiContentModelBase"], "contentType"> & {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            contentType: "blogTags";
+        });
+        BlogTagsContentResponseModel: Omit<components["schemas"]["IApiContentResponseModelBase"], "contentType"> & Omit<components["schemas"]["BlogTagsContentModel"], "contentType"> & {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            contentType: "blogTags";
+        };
+        BlogTagsPropertiesModel: Record<string, never>;
         CallToActionBlockElementModel: {
             properties?: components["schemas"]["CallToActionBlockPropertiesModel"];
         } & (Omit<components["schemas"]["IApiElementModelBase"], "contentType"> & {
@@ -406,6 +428,7 @@ export interface components {
             logos?: components["schemas"]["ApiBlockItemModel"] | components["schemas"]["ApiBlockGridItemModel"];
             copyright?: string | null;
             copyrightLinks?: components["schemas"]["ApiLinkModel"][] | null;
+            andrewsMagicProperty?: components["schemas"]["ApiBlockListModel"];
         };
         HeaderContentModel: {
             properties?: components["schemas"]["HeaderPropertiesModel"];
@@ -486,7 +509,7 @@ export interface components {
         } & {
             [key: string]: unknown;
         });
-        IApiContentModel: components["schemas"]["HeaderContentModel"] | components["schemas"]["SettingsContentModel"] | components["schemas"]["ContentPageContentModel"] | components["schemas"]["HomepageContentModel"] | components["schemas"]["BlogContentModel"] | components["schemas"]["BlogArticleContentModel"] | components["schemas"]["HeadingContentModel"] | components["schemas"]["FooterContentModel"];
+        IApiContentModel: components["schemas"]["HeaderContentModel"] | components["schemas"]["SettingsContentModel"] | components["schemas"]["ContentPageContentModel"] | components["schemas"]["HomepageContentModel"] | components["schemas"]["BlogContentModel"] | components["schemas"]["BlogArticleContentModel"] | components["schemas"]["HeadingContentModel"] | components["schemas"]["FooterContentModel"] | components["schemas"]["SocialMediaSettingsContentModel"] | components["schemas"]["TagContentModel"] | components["schemas"]["BlogTagsContentModel"];
         IApiContentModelBase: {
             /** Format: uuid */
             readonly id: string;
@@ -498,7 +521,7 @@ export interface components {
             readonly updateDate: string;
             readonly route: components["schemas"]["ApiContentRouteModel"];
         } & Omit<WithRequired<components["schemas"]["IApiElementModelBase"], "contentType" | "id">, "contentType">;
-        IApiContentResponseModel: components["schemas"]["HeaderContentResponseModel"] | components["schemas"]["SettingsContentResponseModel"] | components["schemas"]["ContentPageContentResponseModel"] | components["schemas"]["HomepageContentResponseModel"] | components["schemas"]["BlogContentResponseModel"] | components["schemas"]["BlogArticleContentResponseModel"] | components["schemas"]["HeadingContentResponseModel"] | components["schemas"]["FooterContentResponseModel"];
+        IApiContentResponseModel: components["schemas"]["HeaderContentResponseModel"] | components["schemas"]["SettingsContentResponseModel"] | components["schemas"]["ContentPageContentResponseModel"] | components["schemas"]["HomepageContentResponseModel"] | components["schemas"]["BlogContentResponseModel"] | components["schemas"]["BlogArticleContentResponseModel"] | components["schemas"]["HeadingContentResponseModel"] | components["schemas"]["FooterContentResponseModel"] | components["schemas"]["SocialMediaSettingsContentResponseModel"] | components["schemas"]["TagContentResponseModel"] | components["schemas"]["BlogTagsContentResponseModel"];
         IApiContentResponseModelBase: {
             /** Format: uuid */
             readonly id: string;
@@ -597,6 +620,7 @@ export interface components {
         });
         ImageGalleryBlockPropertiesModel: {
             images?: components["schemas"]["IApiMediaWithCropsModel"][] | null;
+            enableLightbox?: boolean | null;
         };
         ImageOffsetPageHeaderElementModel: {
             properties?: components["schemas"]["ImageOffsetPageHeaderPropertiesModel"];
@@ -802,6 +826,30 @@ export interface components {
         SocialMediaAccountsBlockPropertiesModel: {
             accounts?: components["schemas"]["ApiBlockListModel"];
         };
+        SocialMediaSettingsContentModel: {
+            contentType: "SocialMediaSettingsContentModel";
+            properties?: components["schemas"]["SocialMediaSettingsPropertiesModel"];
+        } & Omit<components["schemas"]["IApiContentModelBase"], "contentType">;
+        SocialMediaSettingsContentResponseModel: {
+            contentType: "SocialMediaSettingsContentResponseModel";
+        } & (Omit<components["schemas"]["IApiContentResponseModelBase"], "contentType"> & Omit<components["schemas"]["SocialMediaSettingsContentModel"], "contentType">);
+        SocialMediaSettingsPropertiesModel: {
+            facebookUrl?: string | null;
+            enableFacebookShare?: boolean | null;
+            xUrl?: string | null;
+            enableXShare?: boolean | null;
+            linkedInUrl?: string | null;
+            enableLinkedInShare?: boolean | null;
+            instagramUrl?: string | null;
+            youTubeUrl?: string | null;
+            tikTokUrl?: string | null;
+            pinterestUrl?: string | null;
+            gitHubUrl?: string | null;
+            blueskyUrl?: string | null;
+            enableWhatsAppShare?: boolean | null;
+            enableEmailShare?: boolean | null;
+            enablePrintShare?: boolean | null;
+        };
         StatItemElementModel: {
             properties?: components["schemas"]["StatItemPropertiesModel"];
         } & (Omit<components["schemas"]["IApiElementModelBase"], "contentType"> & {
@@ -828,6 +876,16 @@ export interface components {
         StatsBlockPropertiesModel: {
             title?: string | null;
             stats?: components["schemas"]["ApiBlockListModel"];
+        };
+        TagContentModel: {
+            contentType: "TagContentModel";
+            properties?: components["schemas"]["TagPropertiesModel"];
+        } & Omit<components["schemas"]["IApiContentModelBase"], "contentType">;
+        TagContentResponseModel: {
+            contentType: "TagContentResponseModel";
+        } & (Omit<components["schemas"]["IApiContentResponseModelBase"], "contentType"> & Omit<components["schemas"]["TagContentModel"], "contentType">);
+        TagPropertiesModel: {
+            description?: string | null;
         };
         TestimonialItemElementModel: {
             properties?: components["schemas"]["TestimonialItemPropertiesModel"];
@@ -886,7 +944,7 @@ export interface components {
             content?: components["schemas"]["RichTextModel"];
             link?: components["schemas"]["ApiLinkModel"][] | null;
             image?: components["schemas"]["IApiMediaWithCropsModel"][] | null;
-            imagePosition?: string | null;
+            imagePosition?: boolean | null;
         };
         VideoEmbedBlockElementModel: {
             properties?: components["schemas"]["VideoEmbedBlockPropertiesModel"];

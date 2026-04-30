@@ -3,9 +3,10 @@
 		isOpen: boolean;
 		title: string;
 		onclick: () => void;
+		controls?: string;
 	}
 
-	let { isOpen, title, onclick }: Props = $props();
+	let { isOpen, title, onclick, controls }: Props = $props();
 </script>
 
 <button
@@ -14,6 +15,7 @@
 	{onclick}
 	aria-expanded={isOpen}
 	aria-haspopup="true"
+	aria-controls={controls}
 >
 	{title}
 	<svg

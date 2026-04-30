@@ -1,5 +1,6 @@
 import type { LayoutServerLoad } from './$types';
 import type { components } from '$lib/types/umbraco';
+import type { SocialMediaProperties } from '$lib/types/social';
 import { PUBLIC_UMBRACO_API_URL } from '$env/static/public';
 
 export const load: LayoutServerLoad = async ({ fetch }) => {
@@ -12,12 +13,15 @@ export const load: LayoutServerLoad = async ({ fetch }) => {
 		return res.json();
 	};
 
-	const [headerData, footerData] = await Promise.all([
+	const [headerData, footerData, socialMediaData] = await Promise.all([
 		fetchJson(
 			`${PUBLIC_UMBRACO_API_URL}/umbraco/delivery/api/v2/content?filter=contentType:header&expand=properties[$all]`
 		),
 		fetchJson(
 			`${PUBLIC_UMBRACO_API_URL}/umbraco/delivery/api/v2/content?filter=contentType:footer&expand=properties[$all]`
+		),
+		fetchJson(
+			`${PUBLIC_UMBRACO_API_URL}/umbraco/delivery/api/v2/content?filter=contentType:socialMediaSettings&expand=properties[$all]`
 		)
 	]);
 
@@ -33,5 +37,10 @@ export const load: LayoutServerLoad = async ({ fetch }) => {
 					?.properties ?? null)
 			: null;
 
-	return { header, footer };
+	const socialMedia =
+		(socialMediaData as components['schemas']['PagedIApiContentResponseModel'])?.total > 0
+			? ((socialMediaData.items[0]?.properties as SocialMediaProperties) ?? null)
+			: null;
+
+	return { header, footer, socialMedia };
 };

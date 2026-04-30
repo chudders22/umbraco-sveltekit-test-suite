@@ -22,7 +22,11 @@ import NewsletterSignup from '../components/NewsletterSignup/NewsletterSignup.sv
 /**
  * Shared component map linking Umbraco ContentType aliases to Svelte components.
  * Used by both BlockList (for blocklist properties) and SingleBlock (for single-block properties).
+ *
+ * `Component<any>` is intentional: each block component has heterogeneous props.
+ * Type safety is enforced within each component's own $props() definition.
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const componentMap: Record<string, Component<any>> = {
 	heading: HeadingBlock,
 	textBlock: TextBlock,

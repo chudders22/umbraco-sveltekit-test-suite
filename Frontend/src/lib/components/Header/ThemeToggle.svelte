@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { theme } from '$lib/stores/themeStore';
+	import { theme } from '$lib/stores/themeStore.svelte';
 
-	let isDark = $derived($theme === 'dark');
+	let isDark = $derived(theme.current === 'dark');
 </script>
 
 <button
 	type="button"
-	onclick={() => theme.toggleTheme()}
+	onclick={() => theme.toggle()}
 	class="flex h-9 w-9 items-center justify-center rounded-lg text-zinc-500 transition-all hover:bg-zinc-100 hover:text-zinc-900 focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:outline-none dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:focus-visible:ring-red-400 dark:focus-visible:ring-offset-zinc-950"
 	aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
 >

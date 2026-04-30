@@ -1,14 +1,18 @@
 <script lang="ts">
 	import type { Component } from 'svelte';
+	import type { PageData } from './$types';
+	import type { components } from '$lib/types/umbraco';
 	import Homepage from '$lib/layouts/Homepage.svelte';
 	import ContentPage from '$lib/layouts/ContentPage.svelte';
 	import Blog from '$lib/layouts/Blog.svelte';
 	import BlogArticle from '$lib/layouts/BlogArticle.svelte';
 	import SEO from '$lib/components/SEO.svelte';
 
-	let { data } = $props();
+	let { data }: { data: PageData } = $props();
 
-	// Map Umbraco Page Content Types to our layout wrappers
+	// Block components have heterogeneous props; `any` is intentional here.
+	// Type safety is enforced within each component's own $props() definition.
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const pageLayouts: Record<string, Component<any>> = {
 		homepage: Homepage,
 		contentPage: ContentPage,
@@ -16,21 +20,31 @@
 		blogArticle: BlogArticle
 	};
 
-	// The data.content represents the base API content model at the slug
 	let LayoutComponent = $derived(data.content ? pageLayouts[data.content.contentType] : null);
+
+	// data.content is the generic base model; cast to extract the typed SEO properties.
+	// The specific layout components handle their own typed content via their own props.
+	let seoProperties = $derived(
+		(
+			data.content as unknown as {
+				properties?: components['schemas']['CompositionPageMetadataPropertiesModel'];
+			}
+		)?.properties
+	);
 </script>
 
 {#if data.content}
-	<!-- Pass properties to SEO component if they exist. Because IApiContentResponseModelBase properties is a record, we cast it -->
 	<SEO
 		fallbackTitle={data.content.name || ''}
 		url={data.content.route.path}
-		properties={(data.content as any).properties}
+		contentType={data.content.contentType}
+		properties={seoProperties}
 	/>
 {/if}
 
 {#if data.content && LayoutComponent}
-	<LayoutComponent content={data.content as any} />
+	<!-- content type is resolved dynamically; each layout component handles its own typing -->
+	<LayoutComponent content={data.content} />
 {:else if data.content && !LayoutComponent}
 	<main class="container mx-auto px-4 py-8 text-center text-gray-500">
 		<h2 class="mb-4 text-2xl">Layout not found</h2>
@@ -39,9 +53,5 @@
 			been registered for it yet.
 		</p>
 	</main>
-{:else}
-	<main class="container mx-auto px-4 py-8 text-center text-gray-500">
-		<h2 class="mb-4 text-2xl">Page loading... or 404</h2>
-		<p>No content could be retrieved from Umbraco at this URL.</p>
-	</main>
 {/if}
+
