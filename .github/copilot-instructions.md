@@ -85,5 +85,8 @@ Tests are Storybook stories (co-located with components as `*.stories.ts`), not 
 - uSync imports schema from source on first boot (`ImportOnFirstBoot: true`) — schema changes are tracked in source control.
 
 ### Git
-- Do not automate any git operations (commits, PRs, etc.) in code or scripts.
-- If asked you can create a new branch, but you must fetch the remote main first and base the new branch on it. Do not push it or create a PR. Branch management is manual.
+- **Never commit directly to `main`.** All changes must go on a feature branch.
+- Do not automate any git operations (commits, PRs, pushes, etc.) unless explicitly asked by the user.
+- If asked to commit, always ensure you are on a feature branch first. If the current branch is `main`, stop and ask the user which branch to use.
+- If asked to create a new branch, fetch `origin/main` first and base the new branch on it. Do not push it or create a PR unless explicitly asked.
+- Branch management and merging are the user's responsibility.
