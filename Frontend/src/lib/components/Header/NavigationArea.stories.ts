@@ -4,7 +4,14 @@ import StorybookWrapper from './StorybookNavigationAreaWrapper.svelte';
 const meta = {
 	title: 'Components/Header/NavigationArea',
 	component: StorybookWrapper,
-	tags: ['autodocs', 'snapshot']
+	tags: ['autodocs', 'snapshot'],
+	parameters: {
+		docs: {
+			description: {
+				component: `A dropdown navigation group used inside the \`Header\`. Each area has a toggle button as its trigger and a flyout panel listing child \`NavigationLink\` items. Supports two title types: a plain \`navigationTitle\` (non-clickable label) and a \`naviationTitleLink\` (clickable link that also appends a "See all" link at the bottom of the dropdown). The toggle exposes \`aria-expanded\` and the dropdown closes on \`Escape\`. The component is wrapped in \`StorybookNavigationAreaWrapper\` to provide the controlled open/close state needed for stories.`
+			}
+		}
+	}
 };
 
 export default meta;
@@ -12,6 +19,13 @@ type Story = StoryObj<typeof meta>;
 
 // Workaround for storybook args mapping to Svelte 5 props
 export const VisualTitleGroup: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'A navigation group whose title is a plain text label (`navigationTitle`) — it acts as a toggle only and does not navigate anywhere itself.'
+			}
+		}
+	},
 	args: {
 		item: {
 			content: {
@@ -36,6 +50,13 @@ export const VisualTitleGroup: Story = {
 };
 
 export const ClickableTitleGroup: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'A navigation group whose title is a clickable link (`naviationTitleLink`) — the toggle navigates to the section overview page, and a "See all Products" link is appended at the bottom of the dropdown.'
+			}
+		}
+	},
 	args: {
 		item: {
 			content: {

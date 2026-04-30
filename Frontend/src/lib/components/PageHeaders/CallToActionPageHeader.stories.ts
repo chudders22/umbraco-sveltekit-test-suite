@@ -4,7 +4,14 @@ import CallToActionPageHeader from './CallToActionPageHeader.svelte';
 const meta = {
 	title: 'PageHeaders/CallToActionPageHeader',
 	component: CallToActionPageHeader as any,
-	tags: ['autodocs']
+	tags: ['autodocs'],
+	parameters: {
+		docs: {
+			description: {
+				component: `A bold, dark cinematic page header intended for top-level landing pages. Corresponds to the \`callToActionPageHeader\` Umbraco content type. Similar to \`HeroBlock\` but with a taller minimum height (75vh), a fully dark overlay (no light-mode variant), larger typography (5xl → 7xl), and a light-coloured CTA button. Props: \`heading\` (rendered as \`<h1>\`), \`subheading\`, \`backgroundImage\` (first item used), and \`ctaLink\` (first item used). All props are optional — heading and subheading default to nothing if omitted.`
+			}
+		}
+	}
 } satisfies Meta<any>;
 
 export default meta;
@@ -37,6 +44,13 @@ export const Default: Story = {
 };
 
 export const WithoutCTA: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Shows the page header with no `ctaLink` — useful for informational landing pages that don\'t require a primary call to action.'
+			}
+		}
+	},
 	args: {
 		heading: 'Global Reach, Local Expertise',
 		subheading: 'Connecting organizations with the leadership talent they need.',

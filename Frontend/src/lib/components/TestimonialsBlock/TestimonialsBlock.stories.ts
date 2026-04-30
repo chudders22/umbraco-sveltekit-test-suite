@@ -4,7 +4,14 @@ import TestimonialsBlock from './TestimonialsBlock.svelte';
 const meta = {
 	title: 'Blocks/TestimonialsBlock',
 	component: TestimonialsBlock,
-	tags: ['autodocs', 'snapshot']
+	tags: ['autodocs', 'snapshot'],
+	parameters: {
+		docs: {
+			description: {
+				component: `A grid of customer testimonials. Corresponds to the \`testimonialsBlock\` Umbraco content type. Renders a 1→2→3 column responsive grid of testimonial cards. Each card shows a decorative opening quote mark, the \`quote\` text, and a footer with an optional circular \`authorImage\`, \`authorName\`, and combined \`authorRole\`/\`authorCompany\` attribution. Props: \`title\`, \`subTitle\`, and \`testimonials\` (a BlockList of \`testimonialItem\` blocks). Shows a dashed empty-state placeholder when no testimonials are present. Supports dark mode.`
+			}
+		}
+	}
 } satisfies Meta<any>;
 
 export default meta;
@@ -88,6 +95,13 @@ export const Single: Story = {
 };
 
 export const NoImages: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'All testimonials without `authorImage` — the avatar slot is omitted and the author name/role row renders flush without the image gap.'
+			}
+		}
+	},
 	args: {
 		title: 'Testimonials',
 		subTitle: 'Trusted by teams across industries.',
@@ -138,6 +152,13 @@ export const NoImages: Story = {
 };
 
 export const Empty: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Shows the empty-state placeholder rendered when no testimonial items have been added in the Umbraco backoffice.'
+			}
+		}
+	},
 	args: {
 		title: 'Testimonials',
 		testimonials: { items: [] }

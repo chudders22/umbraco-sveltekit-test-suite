@@ -6,7 +6,12 @@ const meta = {
 	component: Footer,
 	tags: ['autodocs', 'snapshot'],
 	parameters: {
-		layout: 'fullscreen'
+		layout: 'fullscreen',
+		docs: {
+			description: {
+				component: `The global site footer. Rendered in a four-column grid: address/contact column, social media icons column, and a partner logo cloud spanning two columns. The bottom bar contains the site logo, copyright text (defaults to the current year if not supplied), and optional legal/navigation links. Social icons are rendered via inline SVGs with auto-detected platform paths (LinkedIn, GitHub, X/Twitter) or a generic globe fallback. The \`logos\` prop expects a nested Umbraco block wrapping a \`logoCloudBlock\`. All fields are optional. Uses fullscreen layout in Storybook.`
+			}
+		}
 	}
 };
 
@@ -33,6 +38,13 @@ export const Default: Story = {
 };
 
 export const MinimalContent: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Shows the footer with minimal data — only a contact heading, single-line address, and one contact link. Demonstrates that copyright text and legal links are entirely optional.'
+			}
+		}
+	},
 	args: {
 		addressHeading: 'Contact',
 		address: '123 Tech Street\nManchester',
@@ -43,6 +55,13 @@ export const MinimalContent: Story = {
 };
 
 export const NoLogos: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Footer without the `logos` prop — the partner logo cloud column renders an empty-state message from the `LogoCloud` component.'
+			}
+		}
+	},
 	args: {
 		addressHeading: 'Get in Touch',
 		address: '123 Tech Street\nManchester\nM1 2AB',

@@ -4,7 +4,14 @@ import CallToActionBlock from './CallToActionBlock.svelte';
 const meta = {
 	title: 'Blocks/CallToActionBlock',
 	component: CallToActionBlock,
-	tags: ['autodocs']
+	tags: ['autodocs'],
+	parameters: {
+		docs: {
+			description: {
+				component: `A full-width call-to-action section. Corresponds to the \`callToActionBlock\` Umbraco content type. Renders a two-column layout: text content (heading, rich text body, action links) on the left, and an optional background image on the right with a gradient overlay that blends it into the text side. The first action link is always rendered as a primary button with an arrow; subsequent links use the outline style. All fields are optional — heading only, no image, and text-only variants all render gracefully. Features a decorative dot-grid texture that adapts to light and dark mode.`
+			}
+		}
+	}
 } satisfies Meta<any>;
 
 export default meta;
@@ -47,6 +54,13 @@ export const Default: Story = {
 };
 
 export const WithoutImage: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Shows the CTA block without an image — the text content expands to fill the full width.'
+			}
+		}
+	},
 	args: {
 		heading: 'Start Your Journey Today',
 		text: {
@@ -67,6 +81,13 @@ export const WithoutImage: Story = {
 };
 
 export const HeadingOnly: Story = {
+	parameters: {
+		docs: {
+			description: {
+				story: 'Minimal variant with only a heading — demonstrates that all other fields (text, actions, image) are optional and the block renders cleanly with just the heading present.'
+			}
+		}
+	},
 	args: {
 		heading: "Let's Build Something Great Together"
 	}
