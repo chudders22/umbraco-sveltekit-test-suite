@@ -4,8 +4,9 @@
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 
 ## Git
-- **Never commit directly to `main`.** All changes must go on a feature branch.
-- **Never push to or publish any branch on the remote.** Pushing is the user's responsibility.
-- Do not automate any git operations (commits, PRs, pushes, etc.) unless explicitly asked by the user.
-- If asked to commit, always ensure you are on a feature branch first. If the current branch is `main`, stop and ask the user which branch to use.
+The **only** permitted git operation is creating a new local branch:
+1. `git fetch origin`
+2. `git checkout -b <branch-name> origin/main`
+
+Everything else — committing, pushing, merging, rebasing, tagging, PRs — is the user's responsibility and must never be performed by an agent.
 <!-- END:nextjs-agent-rules -->
