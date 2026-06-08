@@ -1,0 +1,70 @@
+/*
+ * Dedicated CSS for the Umbraco block preview endpoint.
+ * Mirrors layout.css but adds isolation rules so the backoffice is not
+ * affected by Tailwind's preflight reset.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@custom-variant dark (&:where(.preview-dark, .preview-dark *));
+
+@theme {
+	--font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+	--font-display: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+	--font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+	--font-mono:
+		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+		monospace;
+}
+
+/* Constrain the preview to its panel — prevents viewport-relative widths and overflows */
+#__preview {
+	display: block;
+	width: 100%;
+	min-width: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
+	box-sizing: border-box;
+}
+
+.preview-root {
+	width: 100%;
+	position: relative;
+}
+
+.preview-root::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 9999;
+	cursor: default;
+}
+
+/*
+ * Gradient variable initialisation — @layer base equivalent.
+ *
+ * Tailwind v4 uses @property (inherits:false, initial-value) so gradient
+ * variables are fresh per-element. @property rules in stylesheets loaded
+ * inside a shadow DOM (Umbraco 17's backoffice) are NOT registered globally
+ * by Chrome, so variables inherit or resolve as guaranteed-invalid, breaking
+ * every gradient.
+ *
+ * Resets inside @layer base give each element safe starting-point values.
+ * Tailwind's @layer utilities (from-*, to-*, via-* classes) always win
+ * because utilities > base in the cascade.
+ */
+@layer base {
+	.preview-root * {
+		--tw-gradient-from: #0000;
+		--tw-gradient-from-position: 0%;
+		--tw-gradient-via: #0000;
+		--tw-gradient-via-position: 50%;
+		/* initial = guaranteed-invalid → var(--tw-gradient-via-stops, fallback) uses fallback */
+		--tw-gradient-via-stops: initial;
+		--tw-gradient-to: #0000;
+		--tw-gradient-to-position: 100%;
+	}
+}
+

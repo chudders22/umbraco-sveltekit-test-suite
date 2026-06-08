@@ -1,0 +1,162 @@
+[
+  {
+    "Id": "10000000-0000-0000-0000-000000000001",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "heroBlock"
+  },
+  {
+    "Id": "e9e5eac2-746d-4fb2-999e-1b08e229c836",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "callToActionBlock"
+  },
+  {
+    "Id": "75b4f620-80de-441f-82ed-bd0649733dd1",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "codeEmbedBlock"
+  },
+  {
+    "Id": "c1032cf0-928d-4e94-8ab3-263a45a30e84",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "imageGalleryBlock"
+  },
+  {
+    "Id": "a58b29f0-29c6-47b8-b8ce-329b38fbed3c",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "textBlock"
+  },
+  {
+    "Id": "e44f8b96-5f50-482f-87d2-7634f3747bf4",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "videoEmbedBlock"
+  },
+  {
+    "Id": "7cc669b3-fd1e-450a-9d96-bde3d231de3e",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "blogListingBlock"
+  },
+  {
+    "Id": "2ef4a6c2-3918-466a-b0bc-2aa7899075a2",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "servicesBlock"
+  },
+  {
+    "Id": "68bd7a0d-2768-4567-8ecc-57b0c0e348d6",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "logoCloudBlock"
+  },
+  {
+    "Id": "f1a20001-0001-0001-0001-000000000001",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "testimonialsBlock"
+  },
+  {
+    "Id": "f1a20001-0001-0001-0001-000000000003",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "statsBlock"
+  },
+  {
+    "Id": "f1a20001-0001-0001-0001-000000000005",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "processBlock"
+  },
+  {
+    "Id": "f1a20001-0001-0001-0001-000000000007",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "twoColumnBlock"
+  },
+  {
+    "Id": "f1a20001-0001-0001-0001-000000000008",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "accordionBlock"
+  },
+  {
+    "Id": "f1a20001-0001-0001-0001-000000000010",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "featuredProjectBlock"
+  },
+  {
+    "Id": "f1a20001-0001-0001-0001-000000000011",
+    "Enabled": true,
+    "EnabledNested": false,
+    "EnabledList": true,
+    "EnabledGrid": true,
+    "EnabledRTE": true,
+    "AdvancedSettings": null,
+    "Alias": "newsletterSignup"
+  }
+]

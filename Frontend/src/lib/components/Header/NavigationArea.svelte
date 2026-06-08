@@ -43,24 +43,24 @@
 <svelte:window onkeydown={handleKeydown} />
 
 <li bind:this={liEl} class="relative py-4" onfocusout={handleFocusOut}>
-	{#if itemProps.title?.content?.contentType === 'naviationTitleLink' && itemProps.title.content.properties?.titleLink?.length > 0}
-		{@const linkProp = itemProps.title.content.properties.titleLink[0]}
-		<NavigationToggle
-			{isOpen}
-			title={linkProp.title || 'Link'}
-			onclick={toggleMenu}
-			controls={dropdownId}
-		/>
-	{:else if itemProps.title?.content?.contentType === 'navigationTitle'}
-		<NavigationToggle
-			{isOpen}
-			title={itemProps.title.content.properties?.title || 'Menu'}
-			onclick={toggleMenu}
-			controls={dropdownId}
-		/>
-	{/if}
-
 	{#if itemProps.links && itemProps.links.length > 0}
+		{#if itemProps.title?.content?.contentType === 'naviationTitleLink' && itemProps.title.content.properties?.titleLink?.length > 0}
+			{@const linkProp = itemProps.title.content.properties.titleLink[0]}
+			<NavigationToggle
+				{isOpen}
+				title={linkProp.title || 'Link'}
+				onclick={toggleMenu}
+				controls={dropdownId}
+			/>
+		{:else if itemProps.title?.content?.contentType === 'navigationTitle'}
+			<NavigationToggle
+				{isOpen}
+				title={itemProps.title.content.properties?.title || 'Menu'}
+				onclick={toggleMenu}
+				controls={dropdownId}
+			/>
+		{/if}
+
 		{#if isOpen}
 			<div
 				id={dropdownId}
@@ -87,5 +87,20 @@
 				{/if}
 			</div>
 		{/if}
+	{:else if itemProps.title?.content?.contentType === 'naviationTitleLink' && itemProps.title.content.properties?.titleLink?.length > 0}
+		{@const linkProp = itemProps.title.content.properties.titleLink[0]}
+		<a
+			href={resolveLinkHref(linkProp)}
+			target={linkProp.target}
+			class="flex items-center gap-1 rounded-md px-3 py-1.5 text-sm font-medium text-zinc-500 transition-all hover:bg-zinc-100 hover:text-zinc-900 focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:outline-none dark:text-zinc-400 dark:hover:bg-zinc-800/80 dark:hover:text-zinc-50 dark:focus-visible:ring-red-400 dark:focus-visible:ring-offset-zinc-950"
+		>
+			{linkProp.title || 'Link'}
+		</a>
+	{:else if itemProps.title?.content?.contentType === 'navigationTitle'}
+		<span
+			class="flex items-center gap-1 rounded-md px-3 py-1.5 text-sm font-medium text-zinc-500 dark:text-zinc-400"
+		>
+			{itemProps.title.content.properties?.title || 'Menu'}
+		</span>
 	{/if}
 </li>
