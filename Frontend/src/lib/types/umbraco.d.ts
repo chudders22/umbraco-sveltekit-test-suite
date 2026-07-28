@@ -150,6 +150,33 @@ export interface components {
             subTitle?: string | null;
             items?: components["schemas"]["ApiBlockListModel"];
         };
+        AccordionGalleryBlockElementModel: {
+            properties?: components["schemas"]["AccordionGalleryBlockPropertiesModel"];
+        } & (Omit<components["schemas"]["IApiElementModelBase"], "contentType"> & {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            contentType: "accordionGalleryBlock";
+        });
+        AccordionGalleryBlockPropertiesModel: {
+            title?: string | null;
+            gallery?: components["schemas"]["IApiMediaWithCropsModel"][] | null;
+            accordion?: components["schemas"]["ApiBlockListModel"];
+        };
+        AccordionGalleryItemElementModel: {
+            properties?: components["schemas"]["AccordionGalleryItemPropertiesModel"];
+        } & (Omit<components["schemas"]["IApiElementModelBase"], "contentType"> & {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            contentType: "accordionGalleryItem";
+        });
+        AccordionGalleryItemPropertiesModel: {
+            title?: string | null;
+            content?: components["schemas"]["RichTextModel"];
+        };
         AccordionItemElementModel: {
             properties?: components["schemas"]["AccordionItemPropertiesModel"];
         } & (Omit<components["schemas"]["IApiElementModelBase"], "contentType"> & {
@@ -260,6 +287,23 @@ export interface components {
              */
             contentType: "blog";
         };
+        BlogFolderContentModel: {
+            properties?: components["schemas"]["BlogFolderPropertiesModel"];
+        } & (Omit<components["schemas"]["IApiContentModelBase"], "contentType"> & {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            contentType: "blogFolder";
+        });
+        BlogFolderContentResponseModel: Omit<components["schemas"]["IApiContentResponseModelBase"], "contentType"> & Omit<components["schemas"]["BlogFolderContentModel"], "contentType"> & {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            contentType: "blogFolder";
+        };
+        BlogFolderPropertiesModel: Record<string, never>;
         BlogListingBlockElementModel: {
             properties?: components["schemas"]["BlogListingBlockPropertiesModel"];
         } & (Omit<components["schemas"]["IApiElementModelBase"], "contentType"> & {
@@ -509,7 +553,7 @@ export interface components {
         } & {
             [key: string]: unknown;
         });
-        IApiContentModel: components["schemas"]["HeaderContentModel"] | components["schemas"]["SettingsContentModel"] | components["schemas"]["ContentPageContentModel"] | components["schemas"]["HomepageContentModel"] | components["schemas"]["BlogContentModel"] | components["schemas"]["BlogArticleContentModel"] | components["schemas"]["HeadingContentModel"] | components["schemas"]["FooterContentModel"] | components["schemas"]["SocialMediaSettingsContentModel"] | components["schemas"]["TagContentModel"] | components["schemas"]["BlogTagsContentModel"];
+        IApiContentModel: components["schemas"]["HeaderContentModel"] | components["schemas"]["SettingsContentModel"] | components["schemas"]["ContentPageContentModel"] | components["schemas"]["HomepageContentModel"] | components["schemas"]["BlogContentModel"] | components["schemas"]["BlogArticleContentModel"] | components["schemas"]["HeadingContentModel"] | components["schemas"]["FooterContentModel"] | components["schemas"]["SocialMediaSettingsContentModel"] | components["schemas"]["TagContentModel"] | components["schemas"]["BlogTagsContentModel"] | components["schemas"]["BlogFolderContentModel"];
         IApiContentModelBase: {
             /** Format: uuid */
             readonly id: string;
@@ -521,7 +565,7 @@ export interface components {
             readonly updateDate: string;
             readonly route: components["schemas"]["ApiContentRouteModel"];
         } & Omit<WithRequired<components["schemas"]["IApiElementModelBase"], "contentType" | "id">, "contentType">;
-        IApiContentResponseModel: components["schemas"]["HeaderContentResponseModel"] | components["schemas"]["SettingsContentResponseModel"] | components["schemas"]["ContentPageContentResponseModel"] | components["schemas"]["HomepageContentResponseModel"] | components["schemas"]["BlogContentResponseModel"] | components["schemas"]["BlogArticleContentResponseModel"] | components["schemas"]["HeadingContentResponseModel"] | components["schemas"]["FooterContentResponseModel"] | components["schemas"]["SocialMediaSettingsContentResponseModel"] | components["schemas"]["TagContentResponseModel"] | components["schemas"]["BlogTagsContentResponseModel"];
+        IApiContentResponseModel: components["schemas"]["HeaderContentResponseModel"] | components["schemas"]["SettingsContentResponseModel"] | components["schemas"]["ContentPageContentResponseModel"] | components["schemas"]["HomepageContentResponseModel"] | components["schemas"]["BlogContentResponseModel"] | components["schemas"]["BlogArticleContentResponseModel"] | components["schemas"]["HeadingContentResponseModel"] | components["schemas"]["FooterContentResponseModel"] | components["schemas"]["SocialMediaSettingsContentResponseModel"] | components["schemas"]["TagContentResponseModel"] | components["schemas"]["BlogTagsContentResponseModel"] | components["schemas"]["BlogFolderContentResponseModel"];
         IApiContentResponseModelBase: {
             /** Format: uuid */
             readonly id: string;
@@ -536,7 +580,7 @@ export interface components {
                 [key: string]: components["schemas"]["ApiContentRouteModel"];
             };
         } & Omit<WithRequired<components["schemas"]["IApiContentModelBase"], "contentType" | "createDate" | "id" | "route" | "updateDate">, "contentType">;
-        IApiElementModel: components["schemas"]["BlogListingBlockElementModel"] | components["schemas"]["CallToActionBlockElementModel"] | components["schemas"]["CodeEmbedBlockElementModel"] | components["schemas"]["HeroBlockElementModel"] | components["schemas"]["ImageGalleryBlockElementModel"] | components["schemas"]["TextBlockElementModel"] | components["schemas"]["VideoEmbedBlockElementModel"] | components["schemas"]["CompositionPageHeaderElementModel"] | components["schemas"]["CompositionPageMetadataElementModel"] | components["schemas"]["CompositionStandardContentElementModel"] | components["schemas"]["ImageOffsetPageHeaderElementModel"] | components["schemas"]["BlockDisplaySettingsElementModel"] | components["schemas"]["NaviationTitleLinkElementModel"] | components["schemas"]["NavigationAreaElementModel"] | components["schemas"]["NavigationTitleElementModel"] | components["schemas"]["CallToActionPageHeaderElementModel"] | components["schemas"]["ServiceBlockItemElementModel"] | components["schemas"]["ServicesBlockElementModel"] | components["schemas"]["LogoBlockElementModel"] | components["schemas"]["LogoCloudBlockElementModel"] | components["schemas"]["AccordionBlockElementModel"] | components["schemas"]["AccordionItemElementModel"] | components["schemas"]["FeaturedProjectBlockElementModel"] | components["schemas"]["NewsletterSignupElementModel"] | components["schemas"]["ProcessBlockElementModel"] | components["schemas"]["ProcessStepElementModel"] | components["schemas"]["StatItemElementModel"] | components["schemas"]["StatsBlockElementModel"] | components["schemas"]["TestimonialItemElementModel"] | components["schemas"]["TestimonialsBlockElementModel"] | components["schemas"]["TwoColumnBlockElementModel"] | components["schemas"]["SocialMediaAccountItemElementModel"] | components["schemas"]["SocialMediaAccountsBlockElementModel"];
+        IApiElementModel: components["schemas"]["BlogListingBlockElementModel"] | components["schemas"]["CallToActionBlockElementModel"] | components["schemas"]["CodeEmbedBlockElementModel"] | components["schemas"]["HeroBlockElementModel"] | components["schemas"]["ImageGalleryBlockElementModel"] | components["schemas"]["TextBlockElementModel"] | components["schemas"]["VideoEmbedBlockElementModel"] | components["schemas"]["CompositionPageHeaderElementModel"] | components["schemas"]["CompositionPageMetadataElementModel"] | components["schemas"]["CompositionStandardContentElementModel"] | components["schemas"]["ImageOffsetPageHeaderElementModel"] | components["schemas"]["BlockDisplaySettingsElementModel"] | components["schemas"]["NaviationTitleLinkElementModel"] | components["schemas"]["NavigationAreaElementModel"] | components["schemas"]["NavigationTitleElementModel"] | components["schemas"]["CallToActionPageHeaderElementModel"] | components["schemas"]["ServiceBlockItemElementModel"] | components["schemas"]["ServicesBlockElementModel"] | components["schemas"]["LogoBlockElementModel"] | components["schemas"]["LogoCloudBlockElementModel"] | components["schemas"]["AccordionBlockElementModel"] | components["schemas"]["AccordionItemElementModel"] | components["schemas"]["FeaturedProjectBlockElementModel"] | components["schemas"]["NewsletterSignupElementModel"] | components["schemas"]["ProcessBlockElementModel"] | components["schemas"]["ProcessStepElementModel"] | components["schemas"]["StatItemElementModel"] | components["schemas"]["StatsBlockElementModel"] | components["schemas"]["TestimonialItemElementModel"] | components["schemas"]["TestimonialsBlockElementModel"] | components["schemas"]["TwoColumnBlockElementModel"] | components["schemas"]["SocialMediaAccountItemElementModel"] | components["schemas"]["SocialMediaAccountsBlockElementModel"] | components["schemas"]["AccordionGalleryItemElementModel"] | components["schemas"]["AccordionGalleryBlockElementModel"] | components["schemas"]["MeetTheTeamPersonElementModel"] | components["schemas"]["MeetTheTeamBlockElementModel"];
         IApiElementModelBase: {
             /** Format: uuid */
             readonly id: string;
@@ -660,6 +704,35 @@ export interface components {
         });
         LogoCloudBlockPropertiesModel: {
             logos?: components["schemas"]["ApiBlockListModel"];
+        };
+        MeetTheTeamBlockElementModel: {
+            properties?: components["schemas"]["MeetTheTeamBlockPropertiesModel"];
+        } & (Omit<components["schemas"]["IApiElementModelBase"], "contentType"> & {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            contentType: "meetTheTeamBlock";
+        });
+        MeetTheTeamBlockPropertiesModel: {
+            title?: string | null;
+            subTitle?: string | null;
+            people?: components["schemas"]["ApiBlockListModel"];
+        };
+        MeetTheTeamPersonElementModel: {
+            properties?: components["schemas"]["MeetTheTeamPersonPropertiesModel"];
+        } & (Omit<components["schemas"]["IApiElementModelBase"], "contentType"> & {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            contentType: "meetTheTeamPerson";
+        });
+        MeetTheTeamPersonPropertiesModel: {
+            personName?: string | null;
+            jobTitle?: string | null;
+            profileImage?: components["schemas"]["IApiMediaWithCropsModel"][] | null;
+            bio?: components["schemas"]["RichTextModel"];
         };
         NaviationTitleLinkElementModel: {
             properties?: components["schemas"]["NaviationTitleLinkPropertiesModel"];

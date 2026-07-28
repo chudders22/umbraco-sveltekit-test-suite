@@ -13,11 +13,13 @@ import CallToActionPageHeader from '../components/PageHeaders/CallToActionPageHe
 import ImageOffsetPageHeader from '../components/PageHeaders/ImageOffsetPageHeader.svelte';
 import ProcessBlock from '../components/ProcessBlock/ProcessBlock.svelte';
 import AccordionBlock from '../components/AccordionBlock/AccordionBlock.svelte';
+import AccordionGalleryBlock from '../components/AccordionGalleryBlock/AccordionGalleryBlock.svelte';
 import TestimonialsBlock from '../components/TestimonialsBlock/TestimonialsBlock.svelte';
 import StatsBlock from '../components/StatsBlock/StatsBlock.svelte';
 import TwoColumnBlock from '../components/TwoColumnBlock/TwoColumnBlock.svelte';
 import FeaturedProjectBlock from '../components/FeaturedProjectBlock/FeaturedProjectBlock.svelte';
 import NewsletterSignup from '../components/NewsletterSignup/NewsletterSignup.svelte';
+import MeetTheTeamBlock from '../components/MeetTheTeamBlock/MeetTheTeamBlock.svelte';
 
 /**
  * Shared component map linking Umbraco ContentType aliases to Svelte components.
@@ -42,9 +44,11 @@ export const componentMap: Record<string, Component<any>> = {
 	imageOffsetPageHeader: ImageOffsetPageHeader,
 	processBlock: ProcessBlock,
 	accordionBlock: AccordionBlock,
+	accordionGalleryBlock: AccordionGalleryBlock,
 	testimonialsBlock: TestimonialsBlock,
 	statsBlock: StatsBlock,
 	twoColumnBlock: TwoColumnBlock,
 	featuredProjectBlock: FeaturedProjectBlock,
-	newsletterSignup: NewsletterSignup
+	newsletterSignup: NewsletterSignup,
+	meetTheTeamBlock: MeetTheTeamBlock
 };
